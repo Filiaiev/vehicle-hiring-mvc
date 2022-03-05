@@ -13,6 +13,7 @@
 
         function __set($name, $value)
         {
+            // TODO: Email?
             if($name == 'addressId') {
                 // Fetch address with given addressId in $value from DB 
             }else {

@@ -1,7 +1,7 @@
 <?php
     class DayTrip {
         private $dayTripId;
-        private $pickupLocation;
+        private $pickupAddress;
         private $venue;
         private $price;
         private $maxPassengersNum;
@@ -14,7 +14,11 @@
         }
 
         function __set($name, $value) {
-           $this->$name = $value; 
+            if($name == 'pickupAddressId') {
+                // Fetch address with given pickupAddressId in $value from DB 
+            }else {
+                $this->$name = $value; 
+            }
         }
     }
 ?>

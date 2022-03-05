@@ -1,6 +1,6 @@
 <?php
     class User {
-        private $userLogin;
+        private $email;
         private $pass;
         private $role;
 
@@ -10,7 +10,12 @@
 
         function __set($name, $value)
         {
-            $this->$name = $value;
+            if($name == 'roleId') {
+                // Fetch role with given roleId in $value from DB
+                // (roleDAO needed)
+            }else {
+                $this->$name = $value;
+            }
         }
     }
 ?>

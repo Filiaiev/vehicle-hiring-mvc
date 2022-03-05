@@ -4,7 +4,7 @@
         private $model;
         private $dailyRate;
         private $imageUrl;
-        private $maxPassangerNumber;
+        private $maxPassengerNumber;
         private $postDate;
     
         function __get($name) {

@@ -3,7 +3,7 @@
         private $ticketId;
         private $purchaseDate;
         private $dayTrip;
-        private $customer;
+        private $contactDetails;
 
         function __get($name) {
             return $this->$name;
@@ -13,7 +13,7 @@
         {
             if($name == 'dayTripId') {
                 
-            }else if($name == 'customerId') {
+            }else if($name == 'contactDetailsId') {
               
             }else {
                 $this->$name = $value;
