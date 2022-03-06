@@ -89,7 +89,7 @@ INSERT INTO Model(modelId, modelName, brandId, vehicleTypeId) VALUES
 (17,'H350',3,4),
 (18,'Proace',2,4);
 
-INSERT INTO Vehicle(regNum, modelId, dailyRate, imageUrl, maxPassangerNumber, postDate) VALUES
+INSERT INTO Vehicle(regNum, modelId, dailyRate, imageUrl, maxPassengerNumber, postDate) VALUES
 ('LG25 RCZ',1,155,'https://mediapool.bmwgroup.com/cache/P9/202106/P90426994/P90426994-bmw-r-1250-rs-light-white-style-sport-06-2021-2121px.jpg',1,'2022-02-10'),
 ('LG37 HXT',2,130,'https://www.unitgarage.com/data/thumb_cache/_data_cat_img_r_ninet_pure_3_jpg_rw_900.jpg',1,'2022-02-09'),
 ('LG15 NXO',3,173,'https://www.rgbbikes.com/wp-content/uploads/2020/01/Suzuki-Hayabusa-GSX1300R-Glass-Sparkle-Black-Candy-Burnt-Gold.jpg',1,'2022-02-08'),
