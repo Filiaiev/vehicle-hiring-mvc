@@ -22,5 +22,14 @@
 
             return $st->fetchObject("ContactDetails");
         }
+
+        function getContactDetailsByEmail($email) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT * FROM ContactDetails WHERE email = ?");
+            $st->execute([$email]);
+
+            return $st->fetchObject("ContactDetails");
+        }
     }
+
 ?>

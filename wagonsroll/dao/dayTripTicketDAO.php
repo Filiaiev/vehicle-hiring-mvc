@@ -22,7 +22,7 @@
 
             return $st->fetchObject("DayTripTicket");
         }
-        
+
         function getDayTripTicketsByUserEmail($email) {
             $pdo = Database::getInstance()->getPDO();
             $st = $pdo->prepare("SELECT dtt.* FROM DayTripTicket as dtt
@@ -32,5 +32,34 @@
 
             return $st->fetchAll(PDO::FETCH_CLASS, "DayTripTicket");
         }
+
+        function getDayTripTicketByPurchaseDate($purchaseDate) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT * FROM DayTripTicket WHERE purchaseDate = ?");
+            $st->execute([$purchaseDate]);
+
+            return $st->fetchObject("DayTripTicket");
+        }
+
+        function getDayTripTicketsByUserMobile($mobile) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT dtt.* FROM DayTripTicket as dtt
+                                 INNER JOIN ContactDetails as cd ON dtt.contactDetailsId = cd.contactDetailsId 
+                                 WHERE cd.mobile = ?");
+            $st->execute([$mobile]);
+
+            return $st->fetchAll(PDO::FETCH_CLASS, "DayTripTicket");
+        }
+
+        function getDayTripTicketsByTripDate($date) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT dtt.* FROM DayTripTicket as dtt
+                                 INNER JOIN DayTrip as dt ON dtt.dayTripId = dt.dayTripId
+                                 WHERE dt.date = ?");
+            $st->execute([$date]);
+
+            return $st->fetchAll(PDO::FETCH_CLASS, "DayTripTicket");
+        }
     }
+
 ?>
