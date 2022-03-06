@@ -1,7 +1,7 @@
 <?php
-    enum Role {
-        case SHOP_MANAGER;
-        case CUSTOMER;
-        case EVENT_COORDINATOR;
+    abstract class Role {
+        const SHOP_MANAGER = 'SHOP_MANAGER';
+        const CUSTOMER = 'CUSTOMER';
+        const EVENT_COORDINATOR = 'EVENT_COORDINATOR';
     }
 ?>

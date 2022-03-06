@@ -2,7 +2,7 @@
     class User {
         private $email;
         private $pass;
-        private $role;
+        private $roleName;
 
         function __get($name) {
             return $this->$name;
@@ -10,12 +10,11 @@
 
         function __set($name, $value)
         {
-            if($name == 'roleId') {
-                // Fetch role with given roleId in $value from DB
-                // (roleDAO needed)
-            }else {
-                $this->$name = $value;
-            }
+            $this->$name = $value;
+        }
+
+        function __toString() {
+            return "Email: $this->email, pass: $this->pass, role: $this->roleName";
         }
     }
 ?>

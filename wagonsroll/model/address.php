@@ -15,5 +15,10 @@
         {
             $this->$name = $value;
         }
+
+        function __toString() {
+            return "AddressId: $this->addressId, Line1: $this->addressLine1, Line2: $this->addressLine2,
+                    City: $this->city, County: $this->county, Postcode: $this->postcode";
+        }
     }
 ?>

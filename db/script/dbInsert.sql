@@ -32,7 +32,7 @@ INSERT INTO DayTrip(dayTripId, venue, price, maxPassengersNum, `date`, pickupTim
 (6,'Kensington Palace',29,30,'2022-04-15','17:40:00','19:40:00',5),
 (7,'St.James\'s Palace',14,28,'2022-04-13','17:30:00','19:25:00',4);
 
-INSERT INTO DayTripTicket(ticketID, purchaseDate, contactDetailsId, dayTripId) VALUES
+INSERT INTO DayTripTicket(ticketId, purchaseDate, contactDetailsId, dayTripId) VALUES
 (1,'2022-04-13',1,2),
 (2,'2022-04-15',1,1),
 (3,'2022-04-14',2,5),

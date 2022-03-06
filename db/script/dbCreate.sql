@@ -43,7 +43,7 @@ CREATE TABLE DayTrip(
 );
 
 CREATE TABLE DayTripTicket(
- 	ticketID SERIAL PRIMARY KEY,
+ 	ticketId SERIAL PRIMARY KEY,
 	purchaseDate date NOT NULL,
 	contactDetailsId BIGINT UNSIGNED NOT NULL,
 	FOREIGN KEY(contactDetailsId) REFERENCES ContactDetails(contactDetailsId) ON DELETE CASCADE,
