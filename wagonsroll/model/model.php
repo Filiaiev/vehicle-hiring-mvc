@@ -1,4 +1,7 @@
 <?php
+    require_once "../dao/brandDAO.php";
+    require_once "../dao/vehicleTypeDAO.php";
+
     class Model {
         private $modelId;
         private $modelName;
@@ -11,14 +14,17 @@
     
         function __set($name, $value) {
             if($name == 'brandId') {
-                // Fetch brand with given brandId in $value from DB
-                // (brandDAO needed)
+                $this->brand = BrandDAO::getInstance()->getBrandById($value);
             } else if($name == 'vehicleTypeId') {
-                // Fetch vehicleType with given vehicleTypeId in $value from DB
-                // (vehicleTypeDAO needed)
+                $this->vehicleType = VehicleTypeDAO::getInstance()->getVehicleTypeById($value);
             } else {
                 $this->$name = $value;
             }
+        }
+
+        function __toString() {
+            return "Model Id: $this->modelId, Model Name: $this->modelName,
+                    Brand [$this->brand], Vehicle Type [$this->vehicleType] ";
         }
     }
 ?>

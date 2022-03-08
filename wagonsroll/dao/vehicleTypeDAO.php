@@ -1,0 +1,26 @@
+<?php
+    require_once "../model/database.php";
+    require_once "../model/vehicleType.php";
+
+    class VehicleTypeDAO {
+        private static $instance = null;
+        
+        private function __construct() {
+        }
+
+        static function getInstance() {
+            if(self::$instance == null) {
+                self::$instance = new VehicleTypeDAO();
+            }               
+            return self::$instance;         
+        } 
+
+        function getVehicleTypeById($id) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT * FROM VehicleType WHERE vehicleTypeId = ?");
+            $st->execute([$id]);
+
+            return $st->fetchObject("VehicleType");
+        }
+    }
+?>

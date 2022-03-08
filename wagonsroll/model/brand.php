@@ -10,5 +10,9 @@
         function __set($name, $value) {
             $this->$name = $value;
         }
+
+        function __toString() {
+            return "Brand Id: $this->brandId, Brand Name: $this->brandName ";
+        }
     }
 ?>

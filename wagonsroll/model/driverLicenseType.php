@@ -10,5 +10,9 @@
         function __set($name, $value) {
             $this->$name = $value;
         }
+
+        function __toString() {
+            return "License Type Id: $this->licenseTypeId, License Type Name: $this->licenseTypeName ";
+        }
     }
 ?>
