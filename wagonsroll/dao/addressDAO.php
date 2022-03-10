@@ -17,11 +17,65 @@
 
         function getAddressById($id) {
             $pdo = Database::getInstance()->getPDO();
-            $st = $pdo->prepare("SELECT * FROM Address WHERE addressId = ?");
+            $st = $pdo->prepare("SELECT * FROM `Address` WHERE addressId = ?");
             $st->execute([$id]);
 
             return $st->fetchObject("Address");
         }
+
+        function getAddressByDetails($addressDetails) {
+            $pdo = Database::getInstance()->getPDO();
+            
+            $i = count($addressDetails);
+            $selectQuery = "SELECT * FROM `Address` WHERE ";
+            foreach($addressDetails as $field => $value) {
+                $selectQuery .= !empty($value) ? "$field = ?" : "$field IS NULL"; 
+                if(--$i) {
+                    $selectQuery .= " AND ";
+                }
+            }
+
+            $stParams = array_filter($addressDetails, function($value) {return !empty($value);});
+            $st = $pdo->prepare($selectQuery);
+            $st->execute(array_values($stParams));
+
+            return $st->fetchObject("Address");
+        }
         
+        function save(array $addressDetails) {
+            $address = $this->getAddressByDetails($addressDetails);
+            if($address != null) {
+                return $address;
+            }
+
+            $pdo = Database::getInstance()->getPDO();
+            
+            $stParams = array_filter($addressDetails, function($value) {return !empty($value);});
+            $insertQuery = "INSERT INTO `Address`(";
+            
+            // Question marks query part ... VALUES(?, ...)
+            $fill = "?, ";
+            $i = count($stParams);
+
+            $qmarks = str_repeat($fill, max($i-1, 0));
+            $qmarks .= $i > 1 ? "?" : "";
+            
+            // Field names query part INSERT INTO(...)
+            foreach(array_keys($stParams) as $field) {
+                $insertQuery .= "$field";
+                if(--$i) {
+                    $insertQuery .= ", ";
+                }
+            }
+            $insertQuery .= ") VALUES (".$qmarks.")";
+
+            $st = $pdo->prepare($insertQuery);
+            $st->execute(array_values($stParams));
+
+            $insertedAddressId = $pdo->lastInsertId();
+            $addressDetails["addressId"] = $insertedAddressId;
+
+            return new Address($addressDetails);
+        }
     }
 ?>

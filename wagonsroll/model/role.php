@@ -1,7 +1,7 @@
 <?php
     abstract class Role {
-        const SHOP_MANAGER = 'SHOP_MANAGER';
-        const CUSTOMER = 'CUSTOMER';
-        const EVENT_COORDINATOR = 'EVENT_COORDINATOR';
+        const CUSTOMER = 1;
+        const SHOP_MANAGER = 2;
+        const EVENT_COORDINATOR = 3;
     }
 ?>

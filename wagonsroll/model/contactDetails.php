@@ -9,6 +9,12 @@
         private $address;
         private $email;
      
+        function __construct($parameters = array()) {
+            foreach($parameters as $key => $value) {
+                $this->$key = $value;
+            }
+        }
+
         function __get($name) {
             return $this->$name;
         }

@@ -30,6 +30,24 @@
 
             return $st->fetchObject("ContactDetails");
         }
+
+        function save(array $contactDetails) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("INSERT INTO ContactDetails(firstName, familyName, mobile, email, addressId)
+                                 VALUES(?, ?, ?, ?, ?)");
+            $st->execute([
+                $contactDetails["firstName"],
+                $contactDetails["familyName"],
+                $contactDetails["mobile"],
+                $contactDetails["email"],
+                $contactDetails["addressId"]
+            ]);
+
+            $insertedContactDetailsId = $pdo->lastInsertId();
+            $contactDetails["contactDetailsId"] = $insertedContactDetailsId;
+
+            return new ContactDetails($contactDetails);
+        }
     }
 
 ?>

@@ -1,8 +1,14 @@
 <?php
     class User {
+        private $roleId;
         private $email;
         private $pass;
-        private $roleName;
+
+        function __construct($parameters = array()) {
+            foreach($parameters as $key => $value) {
+                $this->$key = $value;
+            }
+        }
 
         function __get($name) {
             return $this->$name;
@@ -14,7 +20,7 @@
         }
 
         function __toString() {
-            return "Email: $this->email, pass: $this->pass, role: $this->roleName";
+            return "Role ID: $this->roleId, Email: $this->email, pass: $this->pass";
         }
     }
 ?>
