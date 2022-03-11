@@ -1,5 +1,5 @@
 <?php
-    require_once "../config/webConfig.php";
+    require_once "../config/dbConfig.php";
 ?>
 
 <!DOCTYPE html>
