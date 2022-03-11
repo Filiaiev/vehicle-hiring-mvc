@@ -22,5 +22,13 @@
 
             return $st->fetchObject("VehicleType");
         }
+
+        function getAllVehicleTypes() {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT * FROM VehicleType");
+            $st->execute();
+
+            return $st->fetchAll(PDO::FETCH_CLASS, "VehicleType");
+        }
     }
 ?>
