@@ -15,6 +15,14 @@
             return self::$instance;         
         } 
 
+        function getAllVehicleTypes() {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->query("SELECT * FROM VehicleType");
+            $st->execute();
+
+            return $st->fetchAll(PDO::FETCH_CLASS, "VehicleType");
+        }
+
         function getVehicleTypeById($id) {
             $pdo = Database::getInstance()->getPDO();
             $st = $pdo->prepare("SELECT * FROM VehicleType WHERE vehicleTypeId = ?");
