@@ -15,6 +15,14 @@
             return self::$instance;         
         } 
 
+        function getAllBrands() {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->query("SELECT * FROM Brand");
+            $st->execute();
+
+            return $st->fetchAll(PDO::FETCH_CLASS, "Brand");
+        }
+
         function getBrandById($id) {
             $pdo = Database::getInstance()->getPDO();
             $st = $pdo->prepare("SELECT * FROM Brand WHERE brandId = ?");
