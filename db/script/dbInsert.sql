@@ -40,13 +40,13 @@ INSERT INTO DayTripTicket(ticketId, purchaseDate, contactDetailsId, dayTripId) V
 (5,'2022-04-11',2,7);
 
 INSERT INTO VehiclesBooking(bookingId, bookingDateTime, totalcost, contactDetailsId) VALUES
-(1,'2021-01-01 11:30:00',130,1),
-(2,'2021-01-11 01:30:00',50,1),
-(3,'2021-01-15 17:30:00',25,2),
-(4,'2021-02-11 10:30:00',100,3),
-(5,'2021-02-15 15:30:00',50,2),
-(6,'2021-03-04 12:30:00',25,3),
-(7,'2021-03-07 11:30:00',35,3);
+(1,'2022-01-01 11:30:00',130,1),
+(2,'2022-01-11 01:30:00',50,1),
+(3,'2022-01-15 17:30:00',25,2),
+(4,'2022-02-11 10:30:00',100,3),
+(5,'2022-02-15 15:30:00',50,2),
+(6,'2022-03-04 12:30:00',25,3),
+(7,'2022-03-07 11:30:00',35,3);
 
 INSERT INTO DriverLicenseType(licenseTypeId, licenseTypeName) VALUES
 (1,'Category A'),
@@ -70,7 +70,7 @@ INSERT INTO Brand(brandId, brandName) VALUES
 (7,'Suzuki');
 
 INSERT INTO Model(modelId, modelName, brandId, vehicleTypeId) VALUES
-(1,'R 1250 RS',1,1),
+(1,'R 1250 RS 2022',1,1),
 (2,'R nineT Pure',1,1),
 (3,'Hayabusa GSX1300RR',7,1),
 (4,'GSX-R750',7,1),
@@ -87,14 +87,16 @@ INSERT INTO Model(modelId, modelName, brandId, vehicleTypeId) VALUES
 (15,'Boxer Dropside Single Cab L3',5,3),
 (16,'Mighty',3,3),
 (17,'H350',3,4),
-(18,'Proace',2,4);
+(18,'Proace 2020',2,4),
+(19, 'X4 2021', 1, 2),
+(20, 'Proace 2017', 2, 4);
 
 INSERT INTO Vehicle(regNum, modelId, dailyRate, imageUrl, maxPassengerNumber, postDate) VALUES
-('LG25 RCZ',1,155,'https://mediapool.bmwgroup.com/cache/P9/202106/P90426994/P90426994-bmw-r-1250-rs-light-white-style-sport-06-2021-2121px.jpg',1,'2022-02-10'),
+('LG25 RCZ',1,155,'https://cdn.dicklovett.co.uk/uploads/new_vehicle/4_138.jpg?v=1645180225',1,'2022-02-10'),
 ('LG37 HXT',2,130,'https://www.unitgarage.com/data/thumb_cache/_data_cat_img_r_ninet_pure_3_jpg_rw_900.jpg',1,'2022-02-09'),
 ('LG15 NXO',3,173,'https://mototeamrussia.com/media/y21d36/824bad8570b8417abad41c7fb53db328_article.jpg',1,'2022-02-08'),
 ('LG20 AST',4,116,'https://ultimatemotorcycling.com/wp-content/uploads/2020/01/2020-Suzuki-GSX-R750-Buyers-Guide-sport-motorcycle-1.jpg',1,'2022-02-10'),
-('LG07 VTG',5,240,'https://larte-design.ru/images/bmw/x4/1.png',5,'2022-02-07'),
+('LG07 VTG',19,240,'https://larte-design.ru/images/bmw/x4/1.png',5,'2022-02-07'),
 ('LG10 MBE',5,240,'https://bmw.autoportal.ua/img/newcars34/min/bmw_x5_m_2019_34.jpg',5,'2022-02-05'),
 ('LG18 CPY',6,215,'https://cdn.euroncap.com/media/62848/bmw-4-series-convertible.png',4,'2022-02-06'),
 ('LG21 HIB',7,220,'https://quto.ru/service-imgs/5d/b8/3b/92/5db83b921ae1c.jpg',5,'2022-02-10'),
@@ -109,20 +111,20 @@ INSERT INTO Vehicle(regNum, modelId, dailyRate, imageUrl, maxPassengerNumber, po
 ('LG11 MZT',16,215,'https://wroom.ru/i/cars2/hyundai_mighty_3.jpg',3,'2022-02-06'),
 ('LG21 XAY',17,260,'https://autoregion.com.ua/wp-content/uploads/2018/05/hyundai-h350bus-1.jpg',14,'2022-02-08'),
 ('LG13 AXU',18,265,'https://t1-cms-3.images.toyota-europe.com/toyotaone/plpl/toyota-proace-verso-2020-gallery-022-full_tcm-1015-1822763.jpg',9,'2022-02-07'),
-('LG06 PIS',18,265,'https://www.meinauto.de/pics/wpimages/2017/11/toyota-proace-verso-2017-ausen-vorne.jpg',9,'2022-02-07');
+('LG06 PIS',20,265,'https://www.meinauto.de/pics/wpimages/2017/11/toyota-proace-verso-2017-ausen-vorne.jpg',9,'2022-02-07');
 
 INSERT INTO VehiclesBookingItem(bookingDetailId, startDate, endDate, bookingId, regNum) VALUES
-(1,'2021-01-01','2021-01-05',1,'LG25 RCZ'),
-(2,'2021-01-01','2021-01-05',1,'LG03 BOA'),
-(3,'2021-01-12','2021-01-15',2,'LG01 VXT'),
-(4,'2021-01-12','2021-01-13',2,'LG18 CPY'),
-(5,'2021-01-12','2021-01-15',2,'LG15 NXO'),
-(6,'2021-01-15','2021-01-25',3,'LG25 RCZ'),
-(7,'2021-01-15','2021-01-25',3,'LG07 VTG'),
-(8,'2021-02-12','2021-01-13',4,'LG15 NXO'),
-(9,'2021-02-15','2021-01-19',5,'LG01 VXT'),
-(10,'2021-03-04','2021-01-05',6,'LG17 VSP'),
-(11,'2021-03-04','2021-01-05',6,'LG25 RCZ'),
-(12,'2021-03-07','2021-01-28',7,'LG17 VSP'),
-(13,'2021-03-07','2021-01-28',7,'LG18 CPX'),
-(14,'2021-03-07','2021-01-28',7,'LG09 MYR');
+(1,'2022-01-01','2022-01-05',1,'LG25 RCZ'),
+(2,'2022-01-01','2022-01-05',1,'LG03 BOA'),
+(3,'2022-01-12','2022-01-15',2,'LG01 VXT'),
+(4,'2022-01-12','2022-01-13',2,'LG18 CPY'),
+(5,'2022-01-12','2022-01-15',2,'LG15 NXO'),
+(6,'2022-01-15','2022-01-25',3,'LG25 RCZ'),
+(7,'2022-01-15','2022-01-25',3,'LG07 VTG'),
+(8,'2022-02-12','2022-02-13',4,'LG15 NXO'),
+(9,'2022-02-15','2022-02-19',5,'LG01 VXT'),
+(10,'2022-03-04','2022-03-05',6,'LG17 VSP'),
+(11,'2022-03-04','2022-03-05',6,'LG25 RCZ'),
+(12,'2022-03-07','2022-03-28',7,'LG17 VSP'),
+(13,'2022-03-07','2022-03-28',7,'LG18 CPX'),
+(14,'2022-03-07','2022-03-28',7,'LG09 MYR');

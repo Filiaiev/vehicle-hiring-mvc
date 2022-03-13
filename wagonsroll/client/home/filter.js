@@ -5,8 +5,8 @@ $(document).ready(function() {
         this.checked = localStorage.getItem(this.id) === 'true' ? true : false;
     })
 
-    // Load input values, except checkboxes and submit
-    var valueInputs = $('form#filter input:not([type=checkbox], [type=submit])');
+    // Load input values: numbers and dates
+    var valueInputs = $('form#filter input[type=number], input[type=date]');
     valueInputs.each(function() {
         this.value = localStorage.getItem(this.id);
     })
@@ -18,7 +18,7 @@ $(document).ready(function() {
         $(this)
             .find('input[name]')
             .filter(function () {
-                return !this.value;
+                return $(this).val() == '';
             })
             .prop('name', '');
 
@@ -28,8 +28,8 @@ $(document).ready(function() {
             localStorage.setItem(this.id, this.checked);
         })
 
-        // Save inputs values, except checkboxes and submit
-        var valueInputs = $('form#filter input:not([type=checkbox], [type=submit])');
+        // Save inputs values, number and dates
+        var valueInputs = $('form#filter input[type=number], input[type=date]');
         valueInputs.each(function() {
             localStorage.setItem(this.id, this.value);
         })

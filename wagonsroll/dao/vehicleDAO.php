@@ -1,6 +1,8 @@
 <?php
     require_once "../model/database.php";
     require_once "../model/vehicle.php";
+    require_once "../dao/util/queryBuilder.php";
+    require_once "../config/filterConfig.php";
 
     class VehicleDAO {
         private static $instance = null;
@@ -28,6 +30,42 @@
             $st = $pdo->prepare("SELECT * FROM Vehicle");
             $st->execute();
 
+            return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
+        }
+
+        function getAllVehiclesByFilter($filterParams) {
+            $pdo = Database::getInstance()->getPDO();
+            $selectQuery = "SELECT DISTINCT Vehicle.* FROM Vehicle".
+                            " INNER JOIN Model ON Vehicle.modelId = Model.modelId".
+                            " INNER JOIN Brand ON Model.brandId = Brand.brandId".
+                            " INNER JOIN VehicleType ON Model.vehicleTypeId = VehicleType.vehicleTypeId".
+                            " INNER JOIN DriverLicenseType ON VehicleType.licenseTypeId = DriverLicenseType.licenseTypeId".
+                            " WHERE ";
+
+            $executionParams = array();
+            $i = count($filterParams["in"]) + count($filterParams["between"]);
+
+            foreach($filterParams as $key => $arr) {
+                foreach($arr as $field => $values) {
+                    if($key == "in") {
+                        $selectQuery .= AVAILABLE_FILTERS[$key][$field].".$field IN ("
+                        .QueryBuilder::buildPreparedQuestionMarks($values)
+                        .")";
+                    }else if($key == "between") {
+                        $selectQuery .= AVAILABLE_FILTERS[$key][$field].".$field BETWEEN ? AND ?";
+                    }
+
+                    if(--$i) {
+                        $selectQuery .= " AND ";
+                    }
+
+                    $executionParams = array_merge($executionParams, $values);
+                }
+            }
+
+            $st = $pdo->prepare($selectQuery);
+            $st->execute($executionParams);
+            
             return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
         }
 
