@@ -23,6 +23,14 @@
             return $st->fetchObject("VehicleType");
         }
 
+        function getVehicleTypeByName($name) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT * FROM VehicleType WHERE typeName = ?");
+            $st->execute([$name]);
+
+            return $st->fetchObject("VehicleType");
+        }
+
         function getAllVehicleTypes() {
             $pdo = Database::getInstance()->getPDO();
             $st = $pdo->prepare("SELECT * FROM VehicleType");
