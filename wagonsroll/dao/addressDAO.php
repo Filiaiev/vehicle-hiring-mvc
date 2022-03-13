@@ -17,65 +17,29 @@
 
         function getAddressById($id) {
             $pdo = Database::getInstance()->getPDO();
-            $st = $pdo->prepare("SELECT * FROM `Address` WHERE addressId = ?");
+            $st = $pdo->prepare("SELECT * FROM Address WHERE addressId = ?");
             $st->execute([$id]);
 
             return $st->fetchObject("Address");
         }
 
-        function getAddressByDetails($addressDetails) {
+        function getIdByAddress($addressLine1, $addressLine2, $city, $county, $postcode){
             $pdo = Database::getInstance()->getPDO();
-            
-            $i = count($addressDetails);
-            $selectQuery = "SELECT * FROM `Address` WHERE ";
-            foreach($addressDetails as $field => $value) {
-                $selectQuery .= !empty($value) ? "$field = ?" : "$field IS NULL"; 
-                if(--$i) {
-                    $selectQuery .= " AND ";
-                }
-            }
-
-            $stParams = array_filter($addressDetails, function($value) {return !empty($value);});
-            $st = $pdo->prepare($selectQuery);
-            $st->execute(array_values($stParams));
+            $st = $pdo->prepare("SELECT addressId FROM Address WHERE addressLine1 = ? AND addressLine2 = ? AND city = ? AND county = ? AND postcode = ?");
+            $st->execute([$addressLine1, $addressLine2, $city, $county, $postcode]);
 
             return $st->fetchObject("Address");
         }
-        
-        function save(array $addressDetails) {
-            $address = $this->getAddressByDetails($addressDetails);
-            if($address != null) {
-                return $address;
-            }
-
+       
+        function addNewAddress($newAdress) {
             $pdo = Database::getInstance()->getPDO();
-            
-            $stParams = array_filter($addressDetails, function($value) {return !empty($value);});
-            $insertQuery = "INSERT INTO `Address`(";
-            
-            // Question marks query part ... VALUES(?, ...)
-            $fill = "?, ";
-            $i = count($stParams);
-
-            $qmarks = str_repeat($fill, max($i-1, 0));
-            $qmarks .= $i > 1 ? "?" : "";
-            
-            // Field names query part INSERT INTO(...)
-            foreach(array_keys($stParams) as $field) {
-                $insertQuery .= "$field";
-                if(--$i) {
-                    $insertQuery .= ", ";
-                }
-            }
-            $insertQuery .= ") VALUES (".$qmarks.")";
-
-            $st = $pdo->prepare($insertQuery);
-            $st->execute(array_values($stParams));
-
-            $insertedAddressId = $pdo->lastInsertId();
-            $addressDetails["addressId"] = $insertedAddressId;
-
-            return new Address($addressDetails);
+            $st = $pdo->prepare("INSERT INTO Address(addressLine1, addressLine2, city, county, postcode) VALUES (?,?,?,?,?)");
+            $st->execute([$newAdress->addressLine1,
+                        $newAdress->addressLine2,
+                        $newAdress->city,
+                        $newAdress->county,
+                        $newAdress->postcode
+                    ]);
         }
     }
 ?>
