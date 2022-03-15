@@ -48,5 +48,5 @@
     $statusText = "New day trip was addded";
   }
   
-  require_once "../view/statusHandler_view.php";
+  require_once "../view/statusDayTrip_view.php";
 ?>
