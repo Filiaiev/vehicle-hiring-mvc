@@ -22,5 +22,27 @@
 
             return $st->fetchObject("Model");
         }
+
+        function getModelByName($name) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT * FROM Model WHERE modelName = ?");
+            $st->execute([$name]);
+
+            return $st->fetchObject("Model");
+        }
+
+        function getAllModels() {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT * FROM Model");
+            $st->execute();
+
+            return $st->fetchAll(PDO::FETCH_CLASS, "Model");
+        }
+
+        function addNewModel($model) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("INSERT INTO Model (modelName, brandId, vehicleTypeId) VALUES (?, ?, ?)");
+            $st->execute([$model->modelName, $model->brand, $model->vehicleType]);
+        }
     }
 ?>
