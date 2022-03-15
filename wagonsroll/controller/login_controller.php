@@ -27,7 +27,11 @@
         // If login was successful, set the new session variable and show the home page
         else {
             $_SESSION["user"] = $user;
-            require_once "../view/home_view.php";
+            if($user->roleId == Role::CUSTOMER) {
+                require_once "../view/home_view.php";
+            } else if($user->roleId == Role::SHOP_MANAGER) {
+                require_once "../controller/manager_controller.php";
+            }
         }
     }else {
         require_once "../view/login_view.php";
