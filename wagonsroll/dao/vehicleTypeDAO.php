@@ -15,12 +15,12 @@
             return self::$instance;         
         } 
 
-        function getVehicleTypeById($id) {
+        function getAllVehicleTypes() {
             $pdo = Database::getInstance()->getPDO();
-            $st = $pdo->prepare("SELECT * FROM VehicleType WHERE vehicleTypeId = ?");
-            $st->execute([$id]);
+            $st = $pdo->query("SELECT * FROM VehicleType");
+            $st->execute();
 
-            return $st->fetchObject("VehicleType");
+            return $st->fetchAll(PDO::FETCH_CLASS, "VehicleType");
         }
 
         function getVehicleTypeByName($name) {
@@ -31,12 +31,12 @@
             return $st->fetchObject("VehicleType");
         }
 
-        function getAllVehicleTypes() {
+        function getVehicleTypeById($id) {
             $pdo = Database::getInstance()->getPDO();
-            $st = $pdo->prepare("SELECT * FROM VehicleType");
-            $st->execute();
+            $st = $pdo->prepare("SELECT * FROM VehicleType WHERE vehicleTypeId = ?");
+            $st->execute([$id]);
 
-            return $st->fetchAll(PDO::FETCH_CLASS, "VehicleType");
+            return $st->fetchObject("VehicleType");
         }
     }
 ?>

@@ -15,6 +15,14 @@
             return self::$instance;         
         } 
 
+        function getAllDriverLicenseTypes() {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->query("SELECT * FROM DriverLicenseType");
+            $st->execute();
+
+            return $st->fetchAll(PDO::FETCH_CLASS, "DriverLicenseType");
+        }
+
         function getDriverLicenseTypeById($id) {
             $pdo = Database::getInstance()->getPDO();
             $st = $pdo->prepare("SELECT * FROM DriverLicenseType WHERE licenseTypeId = ?");

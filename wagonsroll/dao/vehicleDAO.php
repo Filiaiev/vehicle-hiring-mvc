@@ -1,6 +1,8 @@
 <?php
     require_once "../model/database.php";
     require_once "../model/vehicle.php";
+    require_once "../dao/util/queryBuilder.php";
+    require_once "../config/filterConfig.php";
 
     class VehicleDAO {
         private static $instance = null;
@@ -29,6 +31,64 @@
             $st->execute();
 
             return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
+        }
+
+        function getVehiclesByFilter($filterParams) {
+            $pdo = Database::getInstance()->getPDO();
+            $selectQuery = "SELECT DISTINCT Vehicle.* FROM Vehicle".
+                            " INNER JOIN Model ON Vehicle.modelId = Model.modelId".
+                            " INNER JOIN Brand ON Model.brandId = Brand.brandId".
+                            " INNER JOIN VehicleType ON Model.vehicleTypeId = VehicleType.vehicleTypeId".
+                            " INNER JOIN DriverLicenseType ON VehicleType.licenseTypeId = DriverLicenseType.licenseTypeId".
+                            " WHERE ";
+
+            $executionParams = array();
+            $i = count($filterParams["in"]) + count($filterParams["between"]);
+
+            foreach($filterParams as $key => $arr) {
+                foreach($arr as $field => $values) {
+                    if($key == "in") {
+                        $selectQuery .= AVAILABLE_FILTERS[$key][$field].".$field IN ("
+                        .QueryBuilder::buildPreparedQuestionMarks($values)
+                        .")";
+                    }else if($key == "between") {
+                        $selectQuery .= AVAILABLE_FILTERS[$key][$field].".$field BETWEEN ? AND ?";
+                    }
+
+                    if(--$i) {
+                        $selectQuery .= " AND ";
+                    }
+
+                    $executionParams = array_merge($executionParams, $values);
+                }
+            }
+
+            $st = $pdo->prepare($selectQuery);
+            $st->execute($executionParams);
+            
+            return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
+        }
+
+        function getVehiclesByFullNamePattern($fullName) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT v.* FROM Vehicle as v".
+                         " JOIN Model as m ON m.modelId = v.modelId".
+                         " JOIN Brand as b ON b.brandId = m.brandId".
+                         " WHERE CONCAT(b.brandName, ' ', m.modelName) LIKE ?");
+            $st->execute(["%$fullName%"]);
+            
+            return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
+        }
+
+        function getVehiclesHintsByFullNamePattern($fullNamePattern) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT DISTINCT CONCAT(b.brandName, ' ', m.modelName) AS fullName FROM".
+                                " Vehicle AS v JOIN Model as m ON m.modelId = v.modelId".
+                                " JOIN Brand AS b ON b.brandId = m.brandId".
+                                " WHERE CONCAT(b.brandName, ' ', m.modelName) LIKE ? LIMIT 5");
+            $st->execute(["%$fullNamePattern%"]);
+
+            return $st->fetchAll(PDO::FETCH_COLUMN, 0);
         }
 
         function getVehiclesByPostDate($postDate) {

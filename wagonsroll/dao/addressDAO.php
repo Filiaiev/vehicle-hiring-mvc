@@ -1,6 +1,7 @@
 <?php
     require_once "../model/database.php";
     require_once "../model/address.php";
+    require_once "../dao/util/queryBuilder.php";
 
     class AddressDAO {
         private static $instance = null;
@@ -54,20 +55,10 @@
             $insertQuery = "INSERT INTO `Address`(";
             
             // Question marks query part ... VALUES(?, ...)
-            $fill = "?, ";
-            $i = count($stParams);
-
-            $qmarks = str_repeat($fill, max($i-1, 0));
-            $qmarks .= $i > 1 ? "?" : "";
+            $qmarks = QueryBuilder::buildPreparedQuestionMarks($stParams);
             
             // Field names query part INSERT INTO(...)
-            foreach(array_keys($stParams) as $field) {
-                $insertQuery .= "$field";
-                if(--$i) {
-                    $insertQuery .= ", ";
-                }
-            }
-            $insertQuery .= ") VALUES (".$qmarks.")";
+            $insertQuery .= QueryBuilder::buildValuesToInsert($stParams).") VALUES (".$qmarks.")";
 
             $st = $pdo->prepare($insertQuery);
             $st->execute(array_values($stParams));

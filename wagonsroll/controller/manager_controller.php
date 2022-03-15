@@ -4,5 +4,5 @@
     $allVehicles = VehicleDAO::getInstance()->getAllVehicles();
     $allVehicleTypes = VehicleTypeDAO::getInstance()->getAllVehicleTypes();
 
-    require_once "../view/managerHomepage_view.php";
+    require_once "../view/homeManager_view.php";
 ?>
