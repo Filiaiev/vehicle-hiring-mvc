@@ -9,27 +9,23 @@
     <head>
         <title>Wagons Roll</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script type="text/javascript" src="../client/home/filter.js"></script>
+		<script type="text/javascript" src="../client/js/home/search.js"></script>
+        <script type="text/javascript" src="../client/js/home/inputs.js"></script>
+		<link rel="stylesheet" href="../client/style/search.css";
     </head>
 <body>
 
 <br>
-<!--    -->
-<!-- action will be a .php file    -->
-<form id="search-form" action="" method="get">
-    <input type="text" id="" name="search" placeholder="Enter car name, model, brand" size="40"><br>
-    <input type="submit" hidden>
+<form id="fullname-search-form" action="../controller/home_controller.php" method="get">
+    <input id="direct-search" type="text" name="search" autocomplete="off" placeholder="Start typing (eg. BMW or Camry)" size="40"><br>
+	<div class="hints">
+	</div>
+    <input type="submit" value="Search">
 </form> 
 
-<!-- so far this button is just to be aware of, 
-there should be onclick = "function()" parameter here 
-but I don't add js as of now-->
-<button>Search</button>
 <br>
 <br>
-<!-- there will be quite a few filters here but
-considering we haven't yet decided the way we're gonna 
-implement them, I didn't do more than the most usual-->
+
 <div class="filter" style="border: 2px outset black; width:250px;">
 	<h3 style="text-align: center;">Filter</h3>
 	<hr>
@@ -77,11 +73,11 @@ implement them, I didn't do more than the most usual-->
 			<input id="daily-rate-to" type="number" name="dailyRate[]" placeholder="To"/>
 		</div>
 
-		<div class="filter-block">
+		<!-- <div class="filter-block"></div>
 			<h4>Availability dates</h4>
 			<input id="available-date-from" type="date" name="availableDate[]" placeholder="From"/>
 			<input id="available-date-to" type="date" name="availableDate[]" placeholder="To"/>
-		</div>
+		</div> -->
 
 		<input type="submit" value="Filter"/>
 		<button id="clear-filter-btn" type="reset">Reset</button>
@@ -98,7 +94,6 @@ implement them, I didn't do more than the most usual-->
 
 <button>Add to Basket</button>
 
-<!-- post button press -->
 <hr>
 <form action="" method="get">
     <label for="startdate">Enter Start Date:</label>

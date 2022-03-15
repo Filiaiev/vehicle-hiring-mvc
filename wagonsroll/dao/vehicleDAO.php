@@ -33,7 +33,7 @@
             return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
         }
 
-        function getAllVehiclesByFilter($filterParams) {
+        function getVehiclesByFilter($filterParams) {
             $pdo = Database::getInstance()->getPDO();
             $selectQuery = "SELECT DISTINCT Vehicle.* FROM Vehicle".
                             " INNER JOIN Model ON Vehicle.modelId = Model.modelId".
@@ -67,6 +67,28 @@
             $st->execute($executionParams);
             
             return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
+        }
+
+        function getVehiclesByFullNamePattern($fullName) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT v.* FROM Vehicle as v".
+                         " JOIN Model as m ON m.modelId = v.modelId".
+                         " JOIN Brand as b ON b.brandId = m.brandId".
+                         " WHERE CONCAT(b.brandName, ' ', m.modelName) LIKE ?");
+            $st->execute(["%$fullName%"]);
+            
+            return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
+        }
+
+        function getVehiclesHintsByFullNamePattern($fullNamePattern) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT DISTINCT CONCAT(b.brandName, ' ', m.modelName) AS fullName FROM".
+                                " Vehicle AS v JOIN Model as m ON m.modelId = v.modelId".
+                                " JOIN Brand AS b ON b.brandId = m.brandId".
+                                " WHERE CONCAT(b.brandName, ' ', m.modelName) LIKE ? LIMIT 5");
+            $st->execute(["%$fullNamePattern%"]);
+
+            return $st->fetchAll(PDO::FETCH_COLUMN, 0);
         }
 
         function getVehiclesByPostDate($postDate) {

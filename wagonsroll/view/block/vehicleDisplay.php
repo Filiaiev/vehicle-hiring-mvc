@@ -1,5 +1,5 @@
 <div style="display: flex; flex-wrap:wrap; justify-content:center">
-    <?php foreach ($allVehicles as $vehicle): ?>
+    <?php foreach ($vehicles as $vehicle): ?>
         <div class="carblock" style="border: 2px outset black; width:300px; margin: 5px 15px">
             <img
                 src=<?= $vehicle->imageUrl ?>
