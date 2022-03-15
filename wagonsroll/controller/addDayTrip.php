@@ -2,7 +2,6 @@
   require_once "../dao/dayTripDAO.php";
   require_once "../dao/addressDAO.php";
   require_once "../model/dayTrip.php";
-  require_once "../controller/eventCoordinator_controller.php";
 
   $addressLine1 = $_REQUEST["addressLine1"];  
   $addressLine2 = $_REQUEST["addressLine2"];
@@ -16,6 +15,9 @@
   $date = $_REQUEST["date"];
   $pickupTime = $_REQUEST["pickupTime"];
   $returnTime = $_REQUEST["returnTime"];
+
+  $status = false;
+  $statusText = "Please fill in all fields and try again";
 
   if($addressLine1!="" && isset($addressLine1) && $addressLine2!="" && isset($addressLine2) && $city!="" && isset($city) && $county!="" && isset($county)&& $postcode!="" && isset($postcode))
   {
@@ -41,7 +43,10 @@
     $trip->returnTime = $returnTime;
 
     DayTripDAO::getInstance()->addNewTrip($trip);
+
+    $status = true;
+    $statusText = "New day trip was addded";
   }
   
-  require_once "../view/eventCoordinator_view.php";
+  require_once "../view/statusHandler_view.php";
 ?>
