@@ -104,5 +104,13 @@
             $st = $pdo->prepare("INSERT INTO Vehicle (regNum, modelId, dailyRate, imageUrl, maxPassengerNumber, postDate) VALUES (?, ?, ?, ?, ?, ?)");
             $st->execute([$vehicle->regNum, $vehicle->model, $vehicle->dailyRate, $vehicle->imageUrl, $vehicle->maxPassengerNumber, date('Y-m-d')]);
         }
+
+        function updateVehicle($oldRegNum, $vehicle) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("UPDATE Vehicle
+                                 SET regNum = (?), dailyRate = (?), imageUrl = (?), maxPassengerNumber = (?), postDate = (?)
+                                 WHERE regNum = (?);");
+            $st->execute([$vehicle->regNum, $vehicle->dailyRate, $vehicle->imageUrl, $vehicle->maxPassengerNumber, date('Y-m-d'), $oldRegNum]);
+        }
     }
 ?>

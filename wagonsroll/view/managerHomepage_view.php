@@ -2,6 +2,9 @@
 <html>
     <head>
         <title>Manager Homepage</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+        <script type="text/javascript" src="../service/updateVehicle.js"></script>
     </head>
     <body>
         <h3>Add new vehicle:</h3>
@@ -34,7 +37,7 @@
                         <a><?= $vehicle->dailyRate ?> per day</a><br>
                         <a>Available since 12.02.2021</a><br>
                         <!-- missing onclick() as of now -->
-                        <button>Update</button>
+                        <button class="update" id="<?=$vehicle->regNum?>">Update</button>
                     </div>
                 </div>
             <?php endforeach ?>
