@@ -18,8 +18,16 @@
 
         function getAddressById($id) {
             $pdo = Database::getInstance()->getPDO();
-            $st = $pdo->prepare("SELECT * FROM `Address` WHERE addressId = ?");
+            $st = $pdo->prepare("SELECT * FROM Address WHERE addressId = ?");
             $st->execute([$id]);
+
+            return $st->fetchObject("Address");
+        }
+
+        function getIdByAddress($addressLine1, $addressLine2, $city, $county, $postcode){
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT addressId FROM Address WHERE addressLine1 = ? AND addressLine2 = ? AND city = ? AND county = ? AND postcode = ?");
+            $st->execute([$addressLine1, $addressLine2, $city, $county, $postcode]);
 
             return $st->fetchObject("Address");
         }
@@ -42,7 +50,7 @@
 
             return $st->fetchObject("Address");
         }
-        
+       
         function save(array $addressDetails) {
             $address = $this->getAddressByDetails($addressDetails);
             if($address != null) {

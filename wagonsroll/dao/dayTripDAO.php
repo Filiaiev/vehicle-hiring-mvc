@@ -24,6 +24,15 @@
             return $st->fetchObject("DayTrip");
         }
 
+        function getAlldayTrips() {
+            $dbInstance = Database::getInstance();
+            $pdo = $dbInstance->getPDO();
+            $st = $pdo->prepare("SELECT * FROM DayTrip");
+            $st->execute();
+
+            return $st->fetchAll(PDO::FETCH_CLASS, "DayTrip");
+        }
+
         function getDayTripByDate($date) {
             $dbInstance = Database::getInstance();
             $pdo = $dbInstance->getPDO();
@@ -85,6 +94,21 @@
             $st->execute([$returnTime]);
 
             return $st->fetchObject("DayTrip");
+        }
+
+        function addNewTrip($dayTrip) {
+            $dbInstance = Database::getInstance();
+            $pdo = $dbInstance->getPDO();
+            $st = $pdo->prepare("INSERT INTO DayTrip (pickupAddressId, venue, price, maxPassengersNum, `date`, pickupTime, returnTime) VALUES (?,?,?,?,?,?,?)");
+            $st->execute([
+                        $dayTrip->pickupAddress,
+                        $dayTrip->venue,
+                        $dayTrip->price,
+                        $dayTrip->maxPassengersNum,
+                        $dayTrip->date,
+                        $dayTrip->pickupTime,
+                        $dayTrip->returnTime
+                    ]);
         }
     }
 
