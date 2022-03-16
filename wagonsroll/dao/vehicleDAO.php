@@ -159,7 +159,7 @@
             return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
         }
 
-        function addNewVehicle($vehicle) {
+        function save($vehicle) {
             $pdo = Database::getInstance()->getPDO();
             $st = $pdo->prepare("INSERT INTO Vehicle (regNum, modelId, dailyRate, imageUrl, maxPassengerNumber, postDate) VALUES (?, ?, ?, ?, ?, ?)");
             $st->execute([$vehicle->regNum, $vehicle->model, $vehicle->dailyRate, $vehicle->imageUrl, $vehicle->maxPassengerNumber, date('Y-m-d')]);

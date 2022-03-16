@@ -1,4 +1,11 @@
 <?php
+    require_once "../service/auth_service.php";
+
+    if($_SESSION["user"]->roleId != Role::SHOP_MANAGER) {
+        echo "Action is not allowed";
+        exit();
+    }
+
     require_once "../dao/vehicleDAO.php";
 
     if(!empty($_POST["save"])) {

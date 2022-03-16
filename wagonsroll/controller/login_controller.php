@@ -1,6 +1,9 @@
 <?php
     require_once "../model/user.php";
-    session_start();
+    
+    if(!isset($_SESSION)) {
+        session_start();
+    }
     
     // If the user is already logged in, show the home page
     if(isset($_SESSION["user"])) {
@@ -21,14 +24,14 @@
         // If user with given email was found in the DB, but password is wrong,
         // set loginStatus to 'false' and show the login page
         if($user == null || !password_verify($pass, $user->pass)) {
-            $_REQUEST["loginStatus"] = false;
+            $_REQUEST["message"] = "Invalid credentials";
             require_once "../view/login_view.php";
         }
         // If login was successful, set the new session variable and show the home page
         else {
             $_SESSION["user"] = $user;
             if($user->roleId == Role::CUSTOMER) {
-                require_once "../view/home_view.php";
+                require_once "../controller/home_controller.php";
             } else if($user->roleId == Role::SHOP_MANAGER) {
                 require_once "../controller/manager_controller.php";
             }

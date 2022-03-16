@@ -39,14 +39,6 @@
             return $st->fetchObject("Brand");
         }
 
-        function getAllBrands() {
-            $pdo = Database::getInstance()->getPDO();
-            $st = $pdo->prepare("SELECT * FROM Brand");
-            $st->execute();
-
-            return $st->fetchAll(PDO::FETCH_CLASS, "Brand");
-        }
-
         function addNewBrand($brand) {
             $pdo = Database::getInstance()->getPDO();
             $st = $pdo->prepare("INSERT INTO Brand (brandName) VALUES (?)");

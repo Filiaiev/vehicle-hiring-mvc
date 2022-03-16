@@ -1,4 +1,11 @@
 <?php
+    require_once "../service/auth_service.php";
+
+    if($_SESSION["user"]->roleId != Role::SHOP_MANAGER) {
+        echo "Action is not allowed";
+        exit();
+    }
+
     require_once "../model/vehicle.php";
     require_once "../model/model.php";
     require_once "../dao/vehicleDAO.php";
@@ -40,7 +47,7 @@
             $vehicle->dailyRate = $dailyRate;
             $vehicle->imageUrl = $imageUrl;
             $vehicle->maxPassengerNumber = $maxPassengerNumber;
-            VehicleDAO::getInstance()->addNewVehicle($vehicle);
+            VehicleDAO::getInstance()->save($vehicle);
 
             $status = true;
             $statusText = "New vehicle \"$regNum\" was addded";

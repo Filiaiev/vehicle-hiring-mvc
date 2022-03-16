@@ -4,10 +4,12 @@
         <title>Update vehicle</title>
     </head>
     <body>
+        <button onclick="window.location.href='home_controller.php'">Back Home</button>
         <img 
             src=<?= $vehicle->imageUrl ?> 
             style="max-width:50%"
-        ><br>
+        >
+        <br>
         <form method="post" action="updateVehicle_controller.php">
             <input type="hidden" name="oldRegNum" value="<?= $vehicle->regNum ?>"></input>
             <h3><?= $vehicle->model->brand->brandName ?> <?= $vehicle->model->modelName ?></h3>
