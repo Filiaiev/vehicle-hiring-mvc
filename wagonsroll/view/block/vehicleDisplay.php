@@ -11,7 +11,9 @@
                 <a><?= $vehicle->maxPassengerNumber ?> seats</a><br>
                 <a><?= $vehicle->dailyRate ?> per day</a><br>
                 <?php if($_SESSION["user"]->roleId == Role::SHOP_MANAGER) :?>
-                    <button id="<?=$vehicle->regNum?>" class="update" >Update</button>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-secondary btn-sm update" id="<?=$vehicle->regNum?>">Update</button>
+                    </div>
                 <?php endif ?>
             </div>
         </div>
