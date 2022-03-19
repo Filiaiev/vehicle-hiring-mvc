@@ -13,6 +13,9 @@
             <input name="email" placeholder="email@domain"/>
             <input name="pass" type="password" placeholder="password"/>
             <input type="submit" value="Login"/>
+            <?php if(isset($_GET["location"])) : ?>
+                <input type="hidden" name="location" value="<?=$_GET["location"] ?>"/>
+            <?php endif ?>
         </form>
 
         <button onclick="location.href='register_controller.php'">Register</button>

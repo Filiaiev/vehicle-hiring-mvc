@@ -4,7 +4,7 @@
     if(!isset($_SESSION)) {
         session_start();
     }
-    
+
     // If the user is already logged in, show the home page
     if(isset($_SESSION["user"])) {
         require_once "../view/home_view.php";
@@ -30,6 +30,16 @@
         // If login was successful, set the new session variable and show the home page
         else {
             $_SESSION["user"] = $user;
+            
+            require_once "../dao/contactDetailsDAO.php";
+            $userContactDetails = ContactDetailsDAO::getInstance()->getContactDetailsByEmail($user->email);
+            $_SESSION["contactDetails"] = $userContactDetails;
+
+            if(isset($_POST["location"]) && $_POST["location"] != "") {
+                header("Location:".$_POST["location"]);
+                exit();
+            }
+
             if($user->roleId == Role::CUSTOMER) {
                 require_once "../controller/home_controller.php";
             } else if($user->roleId == Role::SHOP_MANAGER) {
