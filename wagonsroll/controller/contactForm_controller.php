@@ -7,6 +7,11 @@
         session_start();
     }
 
+    if(!isset($_SESSION["user"]) || $_SESSION["user"]->roleId != Role::CUSTOMER) {
+        echo "Action is not allowed";
+        exit();
+    }
+
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $addressDetails = new Address([
             "addressLine1" => $_POST['addressLine1'],

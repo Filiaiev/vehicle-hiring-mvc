@@ -15,6 +15,10 @@
     </head>
 <body>
 
+<?php if(isset($_SESSION["user"])) : ?>
+    <p>Welcome, <?=$_SESSION["user"]->email ?></p>
+<?php endif ?>
+
 <br>
 <?php require_once "block/directSearch.php" ?>
 <br>

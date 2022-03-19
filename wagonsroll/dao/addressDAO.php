@@ -50,6 +50,17 @@
 
             return $st->fetchObject("Address");
         }
+
+        function addNewAddress($newAdress) {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("INSERT INTO Address(addressLine1, addressLine2, city, county, postcode) VALUES (?,?,?,?,?)");
+            $st->execute([$newAdress->addressLine1,
+                        $newAdress->addressLine2,
+                        $newAdress->city,
+                        $newAdress->county,
+                        $newAdress->postcode
+                    ]);
+        }
        
         function save(array $addressDetails) {
             $address = $this->getAddressByDetails($addressDetails);

@@ -10,7 +10,7 @@
                 <a><?= $vehicle->model->vehicleType->typeName ?></a><br>
                 <a><?= $vehicle->maxPassengerNumber ?> seats</a><br>
                 <a><?= $vehicle->dailyRate ?> per day</a><br>
-                <?php if($_SESSION["user"]->roleId == Role::SHOP_MANAGER) :?>
+                <?php if(isset($_SESSION["user"]) && $_SESSION["user"]->roleId == Role::SHOP_MANAGER) :?>
                     <button id="<?=$vehicle->regNum?>" class="update" >Update</button>
                 <?php endif ?>
             </div>
