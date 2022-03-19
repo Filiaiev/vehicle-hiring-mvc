@@ -1,7 +1,12 @@
 <?php
-    require_once "../service/auth_service.php";
+    require_once "../model/role.php";
+    require_once "../model/user.php";
 
-    if($_SESSION["user"]->roleId != Role::SHOP_MANAGER) {
+    if(!isset($_SESSION)) {
+        session_start();
+    }
+
+    if(!isset($_SESSION["user"]) || $_SESSION["user"]->roleId != Role::SHOP_MANAGER) {
         echo "Action is not allowed";
         exit();
     }

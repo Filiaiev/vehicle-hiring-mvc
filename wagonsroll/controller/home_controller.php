@@ -2,13 +2,20 @@
     require_once "../dao/vehicleDAO.php";
     require_once "../dao/dayTripDAO.php";
     require_once "../config/filterConfig.php";
+    require_once "../model/role.php";
+    require_once "../model/user.php";
 
-    // if(!isset($_SESSION)) {
-        // session_start();
-    // }
+    if(!isset($_SESSION)) {
+        session_start();
+    }
+
+    if(isset($_SESSION["user"]) && $_SESSION["user"]->roleId == Role::EVENT_COORDINATOR) {
+        require_once "../dao/dayTripDAO.php";
+        $allDayTrips = DayTripDAO::getInstance()->getAlldayTrips();
+        require_once "../view/eventCoordinator_view.php";
+        exit();
+    }
     
-    require_once "../service/auth_service.php";
-
     if($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["search"]) && trim($_GET["search"] != "")) {
         $vehicles = VehicleDAO::getInstance()->getVehiclesByFullNamePattern($_GET["search"]);
     }else if($_SERVER["REQUEST_METHOD"] == "GET" && !empty($_GET)) {
@@ -40,13 +47,10 @@
         $vehicles = VehicleDAO::getInstance()->getAllVehicles();
     }
 
-    if($_SESSION["user"]->roleId == Role::EVENT_COORDINATOR) {
-        $allDayTrips = DayTripDAO::getInstance()->getAlldayTrips();
-        require_once "../view/eventCoordinator_view.php";
+    if(!isset($_SESSION["user"]) || $_SESSION["user"]->roleId == Role::CUSTOMER) {
+        require_once "../view/homeCustomer_view.php";
     }else if($_SESSION["user"]->roleId == Role::SHOP_MANAGER) {
         $vehiclesTypes = VehicleTypeDAO::getInstance()->getAllVehicleTypes();
         require_once "../view/homeManager_view.php";
-    }else {
-        require_once "../view/home_view.php";
     }
 ?>

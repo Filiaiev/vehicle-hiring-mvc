@@ -19,14 +19,15 @@
     </head>
     <body>
         <div class="container-fluid">
-            <br>
-            <?php require_once "block/directSearch.php" ?>
-            <br>
-            <?php require_once "block/directSearch.php" ?>
-            <br>
+            <?php if(isset($_SESSION["user"])) : ?>
+                <p>Welcome, <?=$_SESSION["user"]->email ?></p>
+            <?php endif ?>
 
+            <br>
+            <?php require_once "block/directSearch.php" ?>
+            <br>
+            <br>
             <?php require_once "block/filterDisplay.php" ?>
-
             <br>
             <br>
 
