@@ -8,20 +8,17 @@
             <div class="btn-group dropstart">
                 <i class="fa fa-solid fa-user fa-2x" style="margin-right:30px" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <!-- TODO display: none when user is unlogged -->
-                    <li>
-                        <form action="../controller/account_controller.php" method="POST">
-                            <input class="dropdown-item" type="submit" value="Account"/>
-                        </form>
-                    </li>
-                    <!-- TODO display: none when user is unlogged -->
-                    <li>
-                        <form action="../controller/logout_controller.php" method="POST">
-                            <input class="dropdown-item" type="submit" value="Logout"/>
-                        </form>
-                    </li>
-                    <!-- TODO if user see dropdown when if he is unlogged and maybe blocked on login/registration pages -->
-                    <!-- <li><a class="dropdown-item" href="#">Login/Register</a></li> -->
+                    <?php if(isset($_SESSION["user"])) : ?>
+                        <li><a class="dropdown-item" href="../controller/account_controller.php">Account</a></li>
+                    <?php endif ?>
+
+                    <?php if(isset($_SESSION["user"])) : ?>
+                        <li><a class="dropdown-item" href="../controller/logout_controller.php">Logout</a></li>
+                    <?php endif ?>
+                    
+                    <?php if(!isset($_SESSION["user"])) : ?>
+                        <li><a class="dropdown-item" href="../controller/login_controller.php">Login/Register</a></li>
+                    <?php endif ?>
                 </ul>
             </div>
             <i class="fa fa-cog fa-fw fa-2x"></i>

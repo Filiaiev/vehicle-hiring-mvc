@@ -1,20 +1,16 @@
 <?php
-    require_once "../service/auth_service.php";
+    require_once "../model/user.php";
+    require_once "../model/contactDetails.php";
+
+    session_start();
+
+    $email = $_SESSION["user"]->email;
+    $firstName = $_SESSION["contactDetails"]->firstName;
+    $familyName = $_SESSION["contactDetails"]->familyName;
+    $mobile = $_SESSION["contactDetails"]->mobile;
+    $addressLine = $_SESSION["contactDetails"]->address->addressLine1;
+    $city = $_SESSION["contactDetails"]->address->city;
+    $postcode = $_SESSION["contactDetails"]->address->postcode;
+
+    require_once "../view/account_view.php";
 ?> 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Account</title>
-    <script src="https://use.fontawesome.com/47474f8808.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body>
-    <?php require_once "../view/block/header.php" ?>
-    <div class="container-fluid">
-        <h1> Your personal information: </h1>
-        <h3> Email - <?= $_SESSION["user"]->email ?> </h3>
-        <a href="home_controller.php">Return to main page</a>
-    </div>
-</body>
-</html>

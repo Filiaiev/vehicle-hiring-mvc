@@ -18,11 +18,19 @@
 		<link rel="stylesheet" href="../client/style/search.css"/>
     </head>
     <body>
+        <?php require_once "block/header.php" ?>
+        <ul class="nav nav-tabs nav-fill" style="margin-bottom:30px">
+            <li class="nav-item">
+                <a class="nav-link active" href="home_controller.php">Vehicles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Daytrips</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Basket</a>
+            </li>
+        </ul>
         <div class="container-fluid">
-            <?php if(isset($_SESSION["user"])) : ?>
-                <p>Welcome, <?=$_SESSION["user"]->email ?></p>
-            <?php endif ?>
-
             <br>
             <?php require_once "block/directSearch.php" ?>
             <br>
