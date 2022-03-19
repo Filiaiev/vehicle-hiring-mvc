@@ -1,5 +1,6 @@
 <?php
     require_once "../dao/vehicleDAO.php";
+    require_once "../dao/dayTripDAO.php";
     require_once "../config/filterConfig.php";
     require_once "../model/role.php";
     require_once "../model/user.php";
