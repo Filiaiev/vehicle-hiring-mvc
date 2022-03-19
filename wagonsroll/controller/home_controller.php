@@ -1,5 +1,6 @@
 <?php
     require_once "../dao/vehicleDAO.php";
+    require_once "../dao/dayTripDAO.php";
     require_once "../config/filterConfig.php";
 
     // if(!isset($_SESSION)) {
@@ -39,10 +40,13 @@
         $vehicles = VehicleDAO::getInstance()->getAllVehicles();
     }
 
-    if($_SESSION["user"]->roleId == Role::CUSTOMER) {
-        require_once "../view/home_view.php";
+    if($_SESSION["user"]->roleId == Role::EVENT_COORDINATOR) {
+        $allDayTrips = DayTripDAO::getInstance()->getAlldayTrips();
+        require_once "../view/eventCoordinator_view.php";
     }else if($_SESSION["user"]->roleId == Role::SHOP_MANAGER) {
         $vehiclesTypes = VehicleTypeDAO::getInstance()->getAllVehicleTypes();
         require_once "../view/homeManager_view.php";
+    }else {
+        require_once "../view/home_view.php";
     }
 ?>
