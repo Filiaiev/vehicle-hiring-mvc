@@ -16,7 +16,7 @@
         <h3> Mobile - <?= $mobile ?></h3>
         <h3> Email - <?= $email ?> </h3>
         <h3> Address - <?= $addressLine ?>, <?= $city ?>, <?= $postcode ?> </h3>
-        <a href="home_controller.php">Return to main page</a>
+        <a class="btn btn-secondary" href="home_controller.php">Return to main page</a>
     </div>
 </body>
 </html>
