@@ -172,5 +172,13 @@
                                  WHERE regNum = (?);");
             $st->execute([$vehicle->regNum, $vehicle->dailyRate, $vehicle->imageUrl, $vehicle->maxPassengerNumber, date('Y-m-d'), $oldRegNum]);
         }
+
+        function getNewVehicles() {
+            $pdo = Database::getInstance()->getPDO();
+            $st = $pdo->prepare("SELECT * FROM Vehicle ORDER BY postDate DESC LIMIT 5");
+            $st->execute();
+
+            return $st->fetchAll(PDO::FETCH_CLASS, "Vehicle");
+        }
     }
 ?>

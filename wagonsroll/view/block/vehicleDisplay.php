@@ -10,10 +10,15 @@
                 <a><?= $vehicle->model->vehicleType->typeName ?></a><br>
                 <a><?= $vehicle->maxPassengerNumber ?> seats</a><br>
                 <a><?= $vehicle->dailyRate ?> per day</a><br>
+<<<<<<< HEAD
                 <?php if($_SESSION["user"]->roleId == Role::SHOP_MANAGER) :?>
                     <div class="d-grid gap-2">
                         <button type="button" class="btn btn-outline-secondary btn-sm update" id="<?=$vehicle->regNum?>">Update</button>
                     </div>
+=======
+                <?php if(isset($_SESSION["user"]) && $_SESSION["user"]->roleId == Role::SHOP_MANAGER) :?>
+                    <button id="<?=$vehicle->regNum?>" class="update" >Update</button>
+>>>>>>> develop
                 <?php endif ?>
             </div>
         </div>

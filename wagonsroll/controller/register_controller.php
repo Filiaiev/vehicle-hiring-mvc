@@ -5,7 +5,7 @@
     session_start();
 
     if(isset($_SESSION["user"])) {
-        require_once "../view/home_view.php";
+        require_once "../controller/home_controller.php";
     }else if($_SERVER["REQUEST_METHOD"] === "GET") {
         require_once "../view/register_view.php";
     }else if($_SERVER["REQUEST_METHOD"] === "POST") {

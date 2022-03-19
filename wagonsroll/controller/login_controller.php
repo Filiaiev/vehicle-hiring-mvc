@@ -4,10 +4,10 @@
     if(!isset($_SESSION)) {
         session_start();
     }
-    
+
     // If the user is already logged in, show the home page
     if(isset($_SESSION["user"])) {
-        require_once "../view/home_view.php";
+        require_once "../controller/home_controller.php";
     }
     // If all credentials (email, pass) were entered as an input
     else if(isset($_POST["email"]) && $_POST["email"] != "" &&
@@ -24,13 +24,22 @@
         // If user with given email was found in the DB, but password is wrong,
         // set loginStatus to 'false' and show the login page
         if($user == null || !password_verify($pass, $user->pass)) {
-            $_REQUEST["message"] = "Invalid credentials";
+            $message = "Invalid credentials";
             require_once "../view/login_view.php";
         }
         // If login was successful, set the new session variable and show the home page
         else {
             $_SESSION["user"] = $user;
             
+            require_once "../dao/contactDetailsDAO.php";
+            $userContactDetails = ContactDetailsDAO::getInstance()->getContactDetailsByEmail($user->email);
+            $_SESSION["contactDetails"] = $userContactDetails;
+
+            if(isset($_POST["location"]) && $_POST["location"] != "") {
+                header("Location:".$_POST["location"]);
+                exit();
+            }
+
             require_once "../controller/home_controller.php";
         }
     }else {
