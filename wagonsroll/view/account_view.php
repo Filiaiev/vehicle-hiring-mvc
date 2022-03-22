@@ -11,11 +11,13 @@
     <div class="container-fluid">
         <h1> Your personal information: </h1>
         <hr>
-        <h3> Name - <?= $firstName ?></h3>
-        <h3> Family Name - <?= $familyName ?></h3>
-        <h3> Mobile - <?= $mobile ?></h3>
         <h3> Email - <?= $email ?> </h3>
-        <h3> Address - <?= $addressLine ?>, <?= $city ?>, <?= $postcode ?> </h3>
+        <?php if($hasContactDetails): ?>
+            <h3> Name - <?= $firstName ?></h3>
+            <h3> Family Name - <?= $familyName ?></h3>
+            <h3> Mobile - <?= $mobile ?></h3>
+            <h3> Address - <?= $addressLine ?>, <?= $city ?>, <?= $postcode ?> </h3>
+        <?php endif ?>
         <a class="btn btn-secondary" href="home_controller.php">Return to main page</a>
     </div>
 </body>
