@@ -1,0 +1,17 @@
+div.hints {
+    /* position : absolute; */
+    z-index : 1;
+    top : 1.5em;
+    width : 300px;
+    padding : 10px;
+    box-sizing: border-box;
+    background-color : white;
+    border : 1px solid gray;
+    display : none;
+}
+
+div.hints div.hint:hover {
+    background-color : black;
+    color : white;
+    cursor : pointer;
+}

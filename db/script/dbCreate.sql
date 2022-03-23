@@ -1,0 +1,107 @@
+CREATE TABLE Role(
+	roleId SERIAL PRIMARY KEY,
+	roleName VARCHAR(20) UNIQUE NOT NULL
+);
+
+CREATE TABLE `User`(
+	roleId BIGINT UNSIGNED NOT NULL,
+	email VARCHAR(60) PRIMARY KEY,
+	pass CHAR(60) NOT NULL,
+	FOREIGN KEY(roleId) REFERENCES Role(roleId) ON DELETE CASCADE
+);
+
+CREATE TABLE Address(
+	addressId SERIAL PRIMARY KEY,
+	addressLine1 VARCHAR(36) NOT NULL,
+	addressLine2 VARCHAR(36) NULL,
+	city VARCHAR(30) NOT NULL,
+	county VARCHAR(30) NULL,
+	postcode VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE ContactDetails(
+ 	contactDetailsId SERIAL PRIMARY KEY,
+	firstName VARCHAR(30) NOT NULL,
+	familyName VARCHAR(30) NOT NULL,
+	mobile VARCHAR(20) NOT NULL,
+	email VARCHAR(60) NOT NULL,
+	addressId BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY(addressId) REFERENCES Address (addressId) ON DELETE CASCADE,
+	FOREIGN KEY(email) REFERENCES User(email) ON DELETE CASCADE
+);
+
+CREATE TABLE DayTrip(
+	dayTripId SERIAL PRIMARY KEY,
+	venue VARCHAR(60) NOT NULL,
+	price DECIMAL(15,2) NOT NULL,
+	maxPassengersNum SMALLINT NOT NULL,
+	`date` date NOT NULL,
+	pickupTime time NOT NULL,
+	returnTime time NOT NULL,
+	pickupAddressId BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY(pickupAddressId) REFERENCES Address (addressId) ON DELETE CASCADE
+);
+
+CREATE TABLE DayTripTicket(
+ 	ticketId SERIAL PRIMARY KEY,
+	purchaseDate date NOT NULL,
+	contactDetailsId BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY(contactDetailsId) REFERENCES ContactDetails(contactDetailsId) ON DELETE CASCADE,
+	dayTripId BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY(dayTripId) REFERENCES DayTrip (dayTripId) ON DELETE CASCADE
+);
+
+CREATE TABLE VehiclesBooking(
+	bookingId SERIAL PRIMARY KEY,
+	bookingDateTime datetime NOT NULL,
+	totalCost DECIMAL(15,2) NOT NULL DEFAULT 0.0, 
+	contactDetailsId BIGINT UNSIGNED NOT NULL, 
+	FOREIGN KEY(contactDetailsId) REFERENCES ContactDetails(contactDetailsId) ON DELETE CASCADE
+);
+
+CREATE TABLE DriverLicenseType(
+ 	licenseTypeId SERIAL PRIMARY KEY,
+	licenseTypeName VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE VehicleType(
+ 	vehicleTypeId SERIAL PRIMARY KEY,
+	typeName VARCHAR(30) NOT NULL,
+	licenseTypeId BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY(licenseTypeId) REFERENCES DriverLicenseType(licenseTypeId) ON DELETE CASCADE
+);
+
+CREATE TABLE Brand(
+ 	brandId SERIAL PRIMARY KEY,
+	brandName VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Model(
+ 	modelId SERIAL PRIMARY KEY,
+	modelName VARCHAR(30) NOT NULL,
+	brandId BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY(brandId) REFERENCES Brand(brandId) ON DELETE CASCADE,
+	vehicleTypeId BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY(vehicleTypeId) REFERENCES VehicleType(vehicleTypeId) ON DELETE CASCADE
+);
+
+CREATE TABLE Vehicle(
+ 	regNum VARCHAR(10) PRIMARY KEY,
+	modelId BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY(modelId) REFERENCES Model(modelId) ON DELETE CASCADE,
+	dailyRate DECIMAL(15,2) NOT NULL,
+	imageUrl VARCHAR(300) NOT NULL,
+	maxPassengerNumber TINYINT NOT NULL,
+	postDate DATE NOT NULL
+);
+
+CREATE TABLE VehiclesBookingItem(
+	bookingDetailId SERIAL PRIMARY KEY,
+	startDate date NOT NULL,
+	endDate date NOT NULL,
+	bookingId BIGINT UNSIGNED NOT NULL, 
+	FOREIGN KEY(bookingId) REFERENCES VehiclesBooking(bookingId) ON DELETE CASCADE,
+	regNum VARCHAR(10) NOT NULL, 
+ 	FOREIGN KEY(regNum) REFERENCES Vehicle(regNum) ON DELETE CASCADE
+);
+

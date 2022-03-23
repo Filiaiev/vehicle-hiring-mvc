@@ -1,0 +1,27 @@
+ALTER TABLE ContactDetails DROP FOREIGN KEY `ContactDetails_ibfk_1`;
+ALTER TABLE ContactDetails DROP FOREIGN KEY `ContactDetails_ibfk_2`;
+ALTER TABLE DayTrip DROP FOREIGN KEY `DayTrip_ibfk_1`;
+ALTER TABLE DayTripTicket DROP FOREIGN KEY `DayTripTicket_ibfk_1`;
+ALTER TABLE DayTripTicket DROP FOREIGN KEY `DayTripTicket_ibfk_2`;
+ALTER TABLE Model DROP FOREIGN KEY `Model_ibfk_1`;
+ALTER TABLE Model DROP FOREIGN KEY `Model_ibfk_2`;
+ALTER TABLE User DROP FOREIGN KEY `User_ibfk_1`;
+ALTER TABLE Vehicle DROP FOREIGN KEY `Vehicle_ibfk_1`;
+ALTER TABLE VehiclesBooking DROP FOREIGN KEY `VehiclesBooking_ibfk_1`;
+ALTER TABLE VehiclesBookingItem DROP FOREIGN KEY `VehiclesBookingItem_ibfk_1`;
+ALTER TABLE VehiclesBookingItem DROP FOREIGN KEY `VehiclesBookingItem_ibfk_2`;
+ALTER TABLE VehicleType DROP FOREIGN KEY `VehicleType_ibfk_1`;
+
+DROP TABLE Address;
+DROP TABLE ContactDetails;
+DROP TABLE DayTrip;
+DROP TABLE DayTripTicket;
+DROP TABLE Model;
+DROP TABLE User;
+DROP TABLE Vehicle;
+DROP TABLE VehiclesBooking;
+DROP TABLE VehiclesBookingItem;
+DROP TABLE VehicleType;
+DROP TABLE DriverLicenseType;
+DROP TABLE Role;
+DROP TABLE Brand;
