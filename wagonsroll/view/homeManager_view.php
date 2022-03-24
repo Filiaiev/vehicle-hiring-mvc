@@ -19,9 +19,11 @@
                 <input type="text" name="regNum" placeholder="Registration number"/><br>
                 <input type="text" name="brand" placeholder="Brand"/><br>
                 <input type="text" name="model" placeholder="Model"/><br>
-                <?php foreach ($vehiclesTypes as $type): ?>
-                    <input type="radio" name="type" value="<?= $type->typeName ?>" id="<?= $type->typeName ?>">
-                    <label for="<?= $type->typeName ?>"><?= $type->typeName ?></label><br>
+                <?php foreach ($vehiclesTypes as $i => $type): ?>
+                    <div>
+                        <label for="vehicle-type-<?=$i ?>"><?= $type->typeName ?></label>
+                        <input type="radio" name="type" value="<?= $type->typeName ?>" id="vehicle-type-<?=$i ?>">
+                    </div>
                 <?php endforeach ?>
                 <input type="text" name="dailyRate" placeholder="Daily rate"/><br>
                 <input type="text" name="maxPassengerNumber" placeholder="Max passenger number"/><br>
