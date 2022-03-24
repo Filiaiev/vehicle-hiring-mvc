@@ -60,7 +60,7 @@
 
             return $st->fetchAll(PDO::FETCH_CLASS, "DayTripTicket");
         }
-
+        
         function createTicket($tripTicket){
             $pdo = Database::getInstance()->getPDO();
             $st = $pdo->prepare("INSERT INTO DayTripTicket(purchaseDate, contactDetailsId, dayTripId) VALUES (?,?,?)");

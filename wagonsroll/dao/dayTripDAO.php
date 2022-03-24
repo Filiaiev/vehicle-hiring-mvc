@@ -110,7 +110,7 @@
                         $dayTrip->returnTime
                     ]);
         }
-
+        
         function decresePasNum($dayTripId, $updateDayTrip) {
             $dbInstance = Database::getInstance();
             $pdo = $dbInstance->getPDO();
