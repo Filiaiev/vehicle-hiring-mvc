@@ -12,6 +12,7 @@
         var typeName = $("#typeName"+regNum+"").val();
         var maxPassengerNumber = $("#maxPassengerNumber"+regNum+"").val();
         var imageUrl = $("#imageUrl"+regNum+"").val();
+        regNum = regNum.replace("_", " ");
 
         $.ajax({
             method:"POST",

@@ -48,6 +48,33 @@
 
             return new ContactDetails($contactDetails);
         }
+
+        function getContactDetailsByDetails(array $contactDetails) {
+            $pdo = Database::getInstance()->getPDO();
+            $query = "SELECT * FROM ContactDetails as cd
+                      INNER JOIN `Address` as a ON cd.addressId = a.addressId
+                      WHERE cd.firstName = ? AND cd.familyName = ? AND cd.mobile = ? AND cd.email = ?";
+
+            $executionParams = [
+                $contactDetails["firstName"],
+                $contactDetails["familyName"],
+                $contactDetails["mobile"],
+                $contactDetails["email"],
+            ];
+
+            foreach($contactDetails["address"] as $field => $value) {
+                if($value != null) {
+                    $query .= " AND a.$field = ?";
+                    $executionParams[] = $value;
+                }
+            }
+
+            $st = $pdo->prepare($query);
+            $st->execute($executionParams);
+
+            $cd = $st->fetchObject("ContactDetails");
+            return $cd;
+        }
     }
 
 ?>
