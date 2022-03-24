@@ -1,4 +1,5 @@
 <?php
+    require_once "../model/role.php";
     require_once "../model/user.php";
     
     if(!isset($_SESSION)) {
