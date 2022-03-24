@@ -26,7 +26,9 @@
                 <?php endif ?>
 
                 <?php if (isset($_SESSION["user"]) && $_SESSION["user"]->roleId == Role::SHOP_MANAGER) : ?>
-                    <button id="<?= $vehicle->regNum ?>" class="update">Update</button>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-secondary btn-sm update" id="<?=$vehicle->regNum?>">Update</button>
+                    </div>
                 <?php endif ?>
             </div>
         </div>

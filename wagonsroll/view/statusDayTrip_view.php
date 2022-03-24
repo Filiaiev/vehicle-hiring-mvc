@@ -10,6 +10,6 @@
             <h3 style="color: red"><?=$statusText?></h3>
         <?php } ?>
 
-        <a href="eventCoordinator_controller.php">Go to the main page</a>
+        <a href="home_controller.php">Go to the main page</a>
     </body>
 </html>
