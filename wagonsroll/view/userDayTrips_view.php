@@ -9,30 +9,33 @@
     </head>
     <body>
         <h3>Choose event</h3>
-        
-        <div style="display: flex; flex-wrap:wrap; justify-content:center">
-            <?php foreach ($allDayTrips as $dayTrip): ?>
-                <div class="dayTripBlock" style="border: 2px outset black; width:300px; margin: 5px 15px">
-                    <div style="padding: 5px">
-                        <a><?= $dayTrip->pickupAddress ?></a><br>
-                        <a><?= $dayTrip->venue?></a><br>
-                        <a><?= $dayTrip->price ?></a><br>
-                        <a><?= $dayTrip->maxPassengersNum ?> seats</a><br>
-                        <a><?= $dayTrip->date ?></a><br>
-                        <a><?= $dayTrip->pickupTime ?></a><br>
-                        <a><?= $dayTrip->returnTime ?></a><br>
-                        <?php
-                          if($user) :?>
-                            <button class="btn btn-secondary ticketbooking" style="margin-top:2px" id="<?=$dayTrip->dayTripId?>">Book ticket</button>
-                          <?php endif ?>
-                          <?php
-                          if(!$user) :?>
-                             <p style="color: red">If you want to book ticket then go to the <a href="register_controller.php">registration</a></p>
-                          <?php endif ?>
+        <?php if($allDayTrips){ ?>
+            <div style="display: flex; flex-wrap:wrap; justify-content:center">
+                <?php foreach ($allDayTrips as $dayTrip): ?>
+                    <div class="dayTripBlock" style="border: 2px outset black; width:300px; margin: 5px 15px">
+                        <div style="padding: 5px">
+                            <a><?= $dayTrip->pickupAddress ?></a><br>
+                            <a><?= $dayTrip->venue?></a><br>
+                            <a><?= $dayTrip->price ?></a><br>
+                            <a><?= $dayTrip->maxPassengersNum ?> seats</a><br>
+                            <a><?= $dayTrip->date ?></a><br>
+                            <a><?= $dayTrip->pickupTime ?></a><br>
+                            <a><?= $dayTrip->returnTime ?></a><br>
+                            <?php
+                            if($user) :?>
+                                <button class="btn btn-secondary ticketbooking" style="margin-top:2px" id="<?=$dayTrip->dayTripId?>">Book ticket</button>
+                            <?php endif ?>
+                            <?php
+                            if(!$user) :?>
+                                <p style="color: red">If you want to book ticket then go to the <a href="register_controller.php">registration</a></p>
+                            <?php endif ?>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach ?>
-        </div>
+                <?php endforeach ?>
+            </div>
+        <?php } else {?>
+            <h3 style="color: red">There are no day-trips yet</h3>
+        <?php } ?>
    
 
      

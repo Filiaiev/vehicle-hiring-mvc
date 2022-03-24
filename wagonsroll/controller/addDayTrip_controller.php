@@ -28,7 +28,7 @@
     $returnTime = $_REQUEST["returnTime"];
 
     $status = false;
-    $statusText = "Please fill in all fields and try again";
+    $statusText = "Please fill in all fields correctly and try again";
 
     if($addressLine1!="" && isset($addressLine1) && $addressLine2!="" && isset($addressLine2) && $city!="" && isset($city) && $county!="" && isset($county)&& $postcode!="" && isset($postcode))
     {
@@ -42,7 +42,7 @@
         AddressDAO::getInstance()->addNewAddress($address);
     }
 
-    if($venue!="" && isset($venue) && $price!="" && isset($price) && $maxPassengersNum!="" && isset($maxPassengersNum) && $date!="" && isset($date)&& $pickupTime!="" && isset($pickupTime) && $returnTime!="" && isset($returnTime))
+    if($venue!="" && isset($venue) && $price!="" && isset($price) && $maxPassengersNum!="" && isset($maxPassengersNum) && $date!="" && isset($date)&& $pickupTime!="" && isset($pickupTime) && $returnTime!="" && isset($returnTime) && $date > date('Y-m-d'))
     {
         $trip = new DayTrip();
         $trip->pickupAddress = AddressDAO::getInstance()->getIdByAddress($addressLine1, $addressLine2, $city, $county, $postcode)->addressId;

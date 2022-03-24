@@ -5,7 +5,7 @@
     </head>
     <body>
         <h3>Add new day-trip:</h3>
-        <form method="post" action="addDayTrip.php">
+        <form method="post" action="addDayTrip_controller.php">
             <input type="text" name="addressLine1" placeholder="Pick-up address Line1"/><br>
             <input type="text" name="addressLine2" placeholder="Pick-up address Line2"/><br>
             <input type="text" name="city" placeholder="Pick-up city"/><br>
@@ -21,7 +21,8 @@
         </form>
 
         <h3>List of day-trips:</h3>
-        <div style="display: flex; flex-wrap:wrap; justify-content:center">
+        <?php if($allDayTrips){ ?>
+            <div style="display: flex; flex-wrap:wrap; justify-content:center">
             <?php foreach ($allDayTrips as $dayTrip): ?>
                 <div class="dayTripBlock" style="border: 2px outset black; width:300px; margin: 5px 15px">
                     <div style="padding: 5px">
@@ -35,6 +36,9 @@
                     </div>
                 </div>
             <?php endforeach ?>
-        </div>
+            </div>
+        <?php } else {?>
+            <h3 style="color: red">There are no day-trips yet</h3>
+        <?php } ?>
     </body>
 </html>
