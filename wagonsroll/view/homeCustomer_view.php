@@ -24,25 +24,15 @@
             <?php endif ?>
 
             <br>
-            <?php require_once "block/directSearch.php" ?>
-            <br>
-            <br>
-            <?php require_once "block/filterDisplay.php" ?>
-            <br>
-            <br>
+            <?php require_once "block/directSearch.php" ?> <br> <br>
+
+            <?php require_once "block/filterDisplay.php" ?> <br> <br>
+
+            <button onclick="window.location.href='../controller/cart_controller.php'">CART IS HERE BABY IM HERE BABY CLICK ON ME</button> <br><br>
 
             <?php require_once "block/vehicleDisplay.php" ?>
 
-            <button class="btn btn-secondary mt-1">Add to Basket</button>
-
             <hr>
-            <form action="" method="get">
-                <label for="startdate">Enter Start Date:</label>
-                <input type="date" id="startdate" name="startdate"><br>
-                <label for="enddate">Enter End Date:</label>
-                <input type="date" id="enddate" name="enddate"><br>
-                <input type="submit" class="btn btn-secondary mt-1" value="Book">
-            </form>
 
             <h2 style="text-align:center">New vehicles:</h2>
             <div style="display:flex; justify-content:center; margin-bottom:10px">
@@ -66,5 +56,8 @@
                 </div>
             </div>
         </div>
+
+    <?php require_once "../client/js/home/addToCart.js";?>
+
     </body>
 </html>
