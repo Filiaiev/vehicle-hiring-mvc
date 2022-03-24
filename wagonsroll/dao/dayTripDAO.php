@@ -110,6 +110,15 @@
                         $dayTrip->returnTime
                     ]);
         }
+        
+        function decresePasNum($dayTripId, $updateDayTrip) {
+            $dbInstance = Database::getInstance();
+            $pdo = $dbInstance->getPDO();
+            $st = $pdo->prepare("UPDATE DayTrip SET maxPassengersNum = (?) WHERE dayTripId = (?)");
+            $st->execute([
+                $updateDayTrip->maxPassengersNum-1, $dayTripId
+            ]);
+        }
     }
 
 ?>

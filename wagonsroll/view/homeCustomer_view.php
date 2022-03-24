@@ -21,36 +21,24 @@
         <?php require_once "block/header.php" ?>
         <ul class="nav nav-tabs nav-fill" style="margin-bottom:30px">
             <li class="nav-item">
-                <a class="nav-link active" href="home_controller.php">Vehicles</a>
+                <a class="nav-link active" href="home_controller.php">Homepage</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Daytrips</a>
+                <a class="nav-link" href="userDayTrips_controller.php">Daytrips</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Basket</a>
+                <a class="nav-link" href="cart_controller.php">Basket</a>
             </li>
         </ul>
         <div class="container-fluid">
             <br>
-            <?php require_once "block/directSearch.php" ?>
-            <br>
-            <br>
-            <?php require_once "block/filterDisplay.php" ?>
-            <br>
-            <br>
+            <?php require_once "block/directSearch.php" ?> <br> <br>
+
+            <?php require_once "block/filterDisplay.php" ?> <br> <br>
 
             <?php require_once "block/vehicleDisplay.php" ?>
 
-            <button class="btn btn-secondary mt-1">Add to Basket</button>
-
             <hr>
-            <form action="" method="get">
-                <label for="startdate">Enter Start Date:</label>
-                <input type="date" id="startdate" name="startdate"><br>
-                <label for="enddate">Enter End Date:</label>
-                <input type="date" id="enddate" name="enddate"><br>
-                <input type="submit" class="btn btn-secondary mt-1" value="Book">
-            </form>
 
             <h2 style="text-align:center">New vehicles:</h2>
             <div style="display:flex; justify-content:center; margin-bottom:10px">
@@ -74,5 +62,8 @@
                 </div>
             </div>
         </div>
+
+    <?php require_once "../client/js/home/addToCart.js";?>
+
     </body>
 </html>
