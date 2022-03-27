@@ -11,11 +11,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script type="text/javascript" src="../client/js/home/search.js"></script>
         <script type="text/javascript" src="../client/js/home/inputs.js"></script>
+        <script type="text/javascript" src="../client/js/home/addToCart.js"></script>
         <script type="text/javascript" src="../client/js/home/newVehicles.js"></script>
+
         <script src="https://use.fontawesome.com/47474f8808.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-		<link rel="stylesheet" href="../client/style/search.css"/>
+        <link rel="stylesheet" href="../client/style/general.css"/>
+        <link rel="stylesheet" href="../client/style/search.css"/>
+        <link rel="stylesheet" href="../client/style/filter.css"/>
     </head>
     <body>
         <?php require_once "block/header.php" ?>
@@ -35,6 +39,8 @@
             <?php require_once "block/directSearch.php" ?> <br> <br>
 
             <?php require_once "block/filterDisplay.php" ?> <br> <br>
+
+            <h4 class = "instruction">If you want to book a vehicle for 1 day, please input its booking start and end dates as the same date.</h4>
 
             <?php require_once "block/vehicleDisplay.php" ?>
 
@@ -62,8 +68,5 @@
                 </div>
             </div>
         </div>
-
-    <?php require_once "../client/js/home/addToCart.js";?>
-
     </body>
 </html>

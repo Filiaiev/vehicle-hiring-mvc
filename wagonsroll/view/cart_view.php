@@ -9,8 +9,11 @@
 	<title>Cart</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://use.fontawesome.com/47474f8808.js"></script>
+	<script type="text/javascript" src="../client/js/home/cartActions.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="../client/style/general.css">
+	<link rel="stylesheet" href="../client/style/cart.css">
 </head>
 <body>
 	<?php require_once "block/header.php" ?>
@@ -26,8 +29,8 @@
 		</li>
 	</ul>
 	<div class="container">
-		<div class="col-lg-15" style="overflow-x:auto; display:flex; justify-content:center; margin-bottom:10px">
-			<table class="table table-bordered my-5" style="width:1000px;max-width: none;margin-bottom:0!important;">
+		<div class="col-lg-15 car-table-wrapper">
+			<table class="table table-bordered my-5 car-table">
 				<tr>
 					<th>ID</th>
 					<th>IMAGE</th>
@@ -44,7 +47,9 @@
 							 <td>
 								<img
 									src=<?= $value['imageUrl'] ?>               
-									style="width: 100%; height:200px; object-fit:cover;"
+									class = "car-img"
+									alt = "image of <?= $value['brandName'] ?> <?= $value['modelName'] ?>"
+									title = "<?= $value['brandName'] ?> <?= $value['modelName'] ?>"
 								>
 							</td>
 							<td>
@@ -83,9 +88,9 @@
 						</tr>
 			</table>
 		</div>
-		<button onclick="window.location.href='../controller/contactForm_controller.php'" class="btn btn-secondary">Make an order</button> <br><br><br>
+		<button onclick="window.location.href='../controller/contactForm_controller.php'" class="btn btn-secondary order-bttn">Make an order</button> <br><br><br>
 	</div>
 
-<?php require_once "../client/js/home/cartActions.js";?>
+
 </body>
 </html>
