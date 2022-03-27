@@ -50,7 +50,7 @@
             <h2 style="text-align:center">New vehicles:</h2>
             <div style="display:flex; justify-content:center; margin-bottom:10px">
                 <div style="position:relative" id="carouselExampleDark" class="carousel carousel-dark slide w-75" data-bs-ride="carousel" style="margin-bottom:30px">
-                    <div class="carousel-indicators" style="position:absolute; bottom:110px">
+                    <div class="carousel-indicators" style="position:absolute; bottom:85px">
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>

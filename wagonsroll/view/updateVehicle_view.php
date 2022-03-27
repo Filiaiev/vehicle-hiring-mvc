@@ -11,16 +11,18 @@
                 <img 
                     src=<?= $vehicle->imageUrl ?> 
                     style="max-width:50%; margin-right:20px"
+                    alt="Image of <?= $vehicle->model->brand->brandName ?> <?= $vehicle->model->modelName ?>"
+                    title = "<?= $vehicle->model->brand->brandName ?> <?= $vehicle->model->modelName ?>"
                 >
                 <br>
                 <form method="post" action="updateVehicle_controller.php">
                     <input type="hidden" name="oldRegNum" value="<?= $vehicle->regNum ?>"></input>
                     <h3><?= $vehicle->model->brand->brandName ?> <?= $vehicle->model->modelName ?></h3>
                     <h4>Type: <?= $vehicle->model->vehicleType->typeName ?></h4>
-                    Regestration number: <input type="text" name="regNum" value="<?= $vehicle->regNum ?>"></input><br>
-                    Image URL: <input type="text" name="imageUrl" value="<?= $vehicle->imageUrl ?>"></input><br>
-                    Max passenger number: <input type="text" name="maxPassengerNumber" value="<?= $vehicle->maxPassengerNumber ?>"></input><br>
-                    Daily rate: <input type="text" name="dailyRate" value="<?= $vehicle->dailyRate ?>"></input><br>
+                    Regestration number: <input type="text" name="regNum" value="<?= $vehicle->regNum ?>" placeholder="Registration number"></input><br>
+                    Image URL: <input type="text" name="imageUrl" value="<?= $vehicle->imageUrl ?>" placeholder="Image URL"></input><br>
+                    Max passenger number: <input type="text" name="maxPassengerNumber" value="<?= $vehicle->maxPassengerNumber ?>" placeholder="Max Passenger Number"></input><br>
+                    Daily rate: <input type="text" name="dailyRate" value="<?= $vehicle->dailyRate ?>" placeholder="Daily Rate"></input><br>
                     <input type="submit" name="save" value="Save" class="btn btn-secondary"></button>
                 </form>
             </div>
