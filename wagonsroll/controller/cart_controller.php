@@ -13,6 +13,7 @@
                 $total_price = $total_price + $value['price'];
             }
         }
+        $_SESSION["totalPrice"] = $total_price;
         require_once "../view/cart_view.php";
     }
 

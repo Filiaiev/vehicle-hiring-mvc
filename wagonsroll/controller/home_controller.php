@@ -53,3 +53,4 @@
         $vehiclesTypes = VehicleTypeDAO::getInstance()->getAllVehicleTypes();
         require_once "../view/homeManager_view.php";
     }
+?>

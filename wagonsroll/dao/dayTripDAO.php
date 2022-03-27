@@ -27,7 +27,7 @@
         function getAlldayTrips() {
             $dbInstance = Database::getInstance();
             $pdo = $dbInstance->getPDO();
-            $st = $pdo->prepare("SELECT * FROM DayTrip");
+            $st = $pdo->prepare("SELECT * FROM DayTrip WHERE `date`> CURDATE() AND maxPassengersNum >= 1");
             $st->execute();
 
             return $st->fetchAll(PDO::FETCH_CLASS, "DayTrip");
@@ -109,6 +109,15 @@
                         $dayTrip->pickupTime,
                         $dayTrip->returnTime
                     ]);
+        }
+        
+        function decresePasNum($dayTripId, $updateDayTrip) {
+            $dbInstance = Database::getInstance();
+            $pdo = $dbInstance->getPDO();
+            $st = $pdo->prepare("UPDATE DayTrip SET maxPassengersNum = (?) WHERE dayTripId = (?)");
+            $st->execute([
+                $updateDayTrip->maxPassengersNum-1, $dayTripId
+            ]);
         }
     }
 

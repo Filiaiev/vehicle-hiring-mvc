@@ -5,8 +5,9 @@ function countHirePrice($startDate,$endDate,$dailyRate){
 	// Calculates the difference between DateTime objects
 	$interval = date_diff($datetime1, $datetime2);
        // if the date is the same, it means the vehicle is hired for 1 day
-       if ($interval == 0) { $interval = 1;}
-       $price = $dailyRate*$interval->format('%a');
+       $intinterval = $interval->format("%a");
+       if ($intinterval == 0) { $intinterval = 1;}
+       $price = $dailyRate*$intinterval;
        return $price;
  }
 ?>

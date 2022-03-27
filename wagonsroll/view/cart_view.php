@@ -7,16 +7,30 @@
 <head>
 	<meta charset="utf-8">
 	<title>Cart</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://use.fontawesome.com/47474f8808.js"></script>
+	<script type="text/javascript" src="../client/js/home/cartActions.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="../client/style/general.css">
+	<link rel="stylesheet" href="../client/style/cart.css">
 </head>
 <body>
-	<button onclick="window.location.href='../controller/home_controller.php'">HOMEPAGE BABY IM HERE BABY CLICK ON ME</button> <br>
-
+	<?php require_once "block/header.php" ?>
+	<ul class="nav nav-tabs nav-fill" style="margin-bottom:30px">
+		<li class="nav-item">
+			<a class="nav-link" href="home_controller.php">Homepage</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="userDayTrips_controller.php">Daytrips</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link active" href="cart_controller.php">Basket</a>
+		</li>
+	</ul>
 	<div class="container">
-		<div class="col-lg-15" style="overflow-x:auto;">
-			<table class="table table-bordered my-5" style="width:1000px;max-width: none;margin-bottom:0!important;">
+		<div class="col-lg-15 car-table-wrapper">
+			<table class="table table-bordered my-5 car-table">
 				<tr>
 					<th>ID</th>
 					<th>IMAGE</th>
@@ -33,7 +47,9 @@
 							 <td>
 								<img
 									src=<?= $value['imageUrl'] ?>               
-									style="width: 100%; height:200px; object-fit:cover;"
+									class = "car-img"
+									alt = "image of <?= $value['brandName'] ?> <?= $value['modelName'] ?>"
+									title = "<?= $value['brandName'] ?> <?= $value['modelName'] ?>"
 								>
 							</td>
 							<td>
@@ -52,16 +68,17 @@
                              <td>
                              	<button class="btn btn-danger remove" id="<?=$value['regNum'];?>" >Remove</button>
                              </td>
-					</tr>
-						  <?php endforeach; ?>
+						</tr>
+					<?php endforeach; ?>
 					
 				
 				<?php else: ?> 
                        <tr>
-                       	  <td class="text-center" colspan="5">NO ITEM SELECTED</td>
+                       	    <td class="text-center" colspan="5">NO ITEM SELECTED</td>
+							<td colspan="1"></td>
                        </tr>
 				<?php endif ?>
-						 <tr>
+						<tr>
 							<td colspan="3"></td>
 							<td>Total Price</td>
 							<td>£<?= number_format($total_price,2); ?></td>
@@ -71,10 +88,9 @@
 						</tr>
 			</table>
 		</div>
+		<button onclick="window.location.href='../controller/contactForm_controller.php'" class="btn btn-secondary order-bttn">Make an order</button> <br><br><br>
 	</div>
 
-<button onclick="window.location.href='../controller/contactForm_controller.php'" style="margin: auto" >Make an orderrr</button> <br><br><br>
 
-<?php require_once "../client/js/home/cartActions.js";?>
 </body>
 </html>
