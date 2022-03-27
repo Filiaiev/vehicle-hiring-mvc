@@ -12,7 +12,7 @@
         session_start();
     }
 
-    if(!isset($_SESSION["user"]) || $_SESSION["user"]->roleId != Role::CUSTOMER) {
+    if(isset($_SESSION["user"]) && $_SESSION["user"]->roleId != Role::CUSTOMER) {
         echo "Action is not allowed";
         exit();
     }
