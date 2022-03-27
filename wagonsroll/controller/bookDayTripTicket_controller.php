@@ -20,17 +20,8 @@ $updateDayTrip = DayTripDAO::getInstance()->getDayTripById($dayTrip);
 DayTripDAO::getInstance()->decresePasNum($dayTrip, $updateDayTrip);
 
 $userEmail = ContactDetailsDAO::getInstance()->getContactDetailsById($contactDetails)->email;
+
+require_once "../view/ticket_view.php";
 ?>
-<h2>Your ticket: </h2>
-<div style="border: 2px outset black; width:fit-content; padding: 5px; margin-bottom:10px;">
-  <a>User email: <?= $userEmail ?></a><br>
-  <a>Pick-up address: <?= $updateDayTrip->pickupAddress->addressLine1, $updateDayTrip->pickupAddress->addressLine2 ?></a><br>
-  <a>Venue: <?= $updateDayTrip->venue?></a><br>
-  <a>Price: <?= $updateDayTrip->price ?></a><br>
-  <a>Date: <?= $updateDayTrip->date ?></a><br>
-  <a>Pick-up time: <?= $updateDayTrip->pickupTime ?></a><br>
-  <a>Retur time: <?= $updateDayTrip->returnTime ?></a><br>
-  <a>Ticket purchase date: <?= $tripTicket->purchaseDate ?></a><br>
-</div>
-<a href="userDayTrips_controller.php">Return to events</a>
+
 

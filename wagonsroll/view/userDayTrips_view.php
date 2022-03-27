@@ -9,6 +9,8 @@
         <script src="https://use.fontawesome.com/47474f8808.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="../client/style/header.css"/>
+        <link rel="stylesheet" href="../client/style/dayTrip.css"/>
+        <link rel="stylesheet" href="../client/style/general.css">
     </head>
     <body>
         <?php require_once "block/header.php" ?>
@@ -25,33 +27,41 @@
         </ul>
 
         <div class="container-fluid">
-            <h3>Choose event</h3>
+            <div class="title-block">
+                <h3 class="event-title">Choose event</h3>
+            </div>
             <?php if($allDayTrips){ ?>
-                <div style="display: flex; flex-wrap:wrap; justify-content:center">
+                <div class="dayTripBlock">
                     <?php foreach ($allDayTrips as $dayTrip): ?>
-                        <div class="dayTripBlock" style="border: 2px outset black; width:300px; margin: 5px 15px">
-                            <div style="padding: 5px">
-                                <a><?= $dayTrip->pickupAddress ?></a><br>
-                                <a><?= $dayTrip->venue?></a><br>
-                                <a><?= $dayTrip->price ?></a><br>
-                                <a><?= $dayTrip->maxPassengersNum ?> seats</a><br>
-                                <a><?= $dayTrip->date ?></a><br>
-                                <a><?= $dayTrip->pickupTime ?></a><br>
-                                <a><?= $dayTrip->returnTime ?></a><br>
+                        <div class="dayTripItem">
+                            <div class="inner-dayTripItem">
+                                <h6 class="trip-venue"><?= $dayTrip->venue?></h6><br>
+                                <div class="trip-information"> 
+                                    <a><span>Pick-up street: </span>
+                                        <?= $dayTrip->pickupAddress->addressLine1 ?>
+                                        <?= $dayTrip->pickupAddress->addressLine2 ?> 
+                                    </a><br>
+                                    <a><span>Pick-up city: </span><?= $dayTrip->pickupAddress->city ?></a><br>
+                                    <a><span>Price: </span><?= $dayTrip->price ?></a><br>
+                                    <a><span>Number of available tickets: </span><?= $dayTrip->maxPassengersNum ?></a><br>
+                                    <a><span>Date: </span><?= $dayTrip->date ?></a><br>
+                                    <a><span>Pick-up time: </span><?= $dayTrip->pickupTime ?></a><br>
+                                    <a><span>Return time: </span><?= $dayTrip->returnTime ?></a><br> 
+                                </div>
                                 <?php
                                 if($user) :?>
-                                    <button class="btn btn-secondary ticketbooking" style="margin-top:2px" id="<?=$dayTrip->dayTripId?>">Book ticket</button>
+                                    <button class="btn btn-secondary ticketbooking" id="<?=$dayTrip->dayTripId?>">Book ticket</button>
                                 <?php endif ?>
                                 <?php
                                 if(!$user) :?>
-                                    <p style="color: red">If you want to book ticket then go to the <a href="register_controller.php">registration</a></p>
+                                    <p class="red-text">If you want to book ticket then go to the <a href="register_controller.php" class="registration-link">REGISTRATION</a></p>
                                 <?php endif ?>
                             </div>
                         </div>
                     <?php endforeach ?>
                 </div>
             <?php } else {?>
-                <h3 style="color: red">There are no day-trips yet</h3>
+                <h3 class="red-text">There are no day-trips yet</h3>
             <?php } ?>
         </div>
     </body>

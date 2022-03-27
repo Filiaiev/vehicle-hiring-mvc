@@ -1,22 +1,20 @@
 // Load inputs saved states
 $(document).ready(function() {
-    var checkboxes = $('form#filter input[type=checkbox]');
+    var checkboxes = $('form input[type=checkbox]');
     checkboxes.each(function(){
         this.checked = localStorage.getItem(this.id) === 'true' ? true : false;
     })
 
     // Load input values: numbers and dates
-    var valueInputs = $('form#filter input:not([type=checkbox], [type=submit])');
+    var valueInputs = $('form input:not([type=checkbox], [type=submit])');
     valueInputs.each(function() {
-        if(localStorage.getItem(this.id) !== null) {
-            this.value = localStorage.getItem(this.id);
-        }
+        this.value = localStorage.getItem(this.id);
     })
 });
 
 // Handle filter submit
 $(document).ready(function() {
-    $('form#filter').submit(function () {
+    $('form').submit(function () {
         $(this)
             .find('input[name]')
             .filter(function () {
@@ -25,13 +23,13 @@ $(document).ready(function() {
             .prop('name', '');
 
         // Save checkboxes state
-        var checkboxes = $('form#filter input[type=checkbox]');
+        var checkboxes = $('form input[type=checkbox]');
         checkboxes.each(function(){
             localStorage.setItem(this.id, this.checked);
         })
 
         // Save inputs values, number and dates
-        var valueInputs = $('form#filter input:not([type=checkbox], [type=submit])');
+        var valueInputs = $('form input:not([type=checkbox], [type=submit])');
         valueInputs.each(function() {
             localStorage.setItem(this.id, this.value);
         })

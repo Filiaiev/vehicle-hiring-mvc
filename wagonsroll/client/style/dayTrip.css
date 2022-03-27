@@ -1,0 +1,132 @@
+.title-block {
+  display: flex;
+  align-items: center;
+  padding: 35px 300px 25px;
+}
+
+.title-block::before,
+.title-block::after {
+  content: '';
+  flex: 1 1 auto;
+  border-bottom: solid 1px #00008b;
+}
+
+.event-title {
+  flex: 0 1 auto;
+  padding: 0 15px 0 15px;
+}
+
+.addTriptitle-block {
+  display: flex;
+  align-items: center;
+  padding: 5px 300px 25px;
+}
+
+.addTriptitle-block::before,
+.addTriptitle-block::after {
+  content: '';
+  flex: 1 1 auto;
+  border-bottom: solid 1px #00008b;
+}
+
+.trip-venue {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px 0 0 0;
+  height: 45px;
+}
+
+.dayTripBlock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dayTripItem {
+  border: 2px outset black;
+  width: 320px;
+  margin: 10px;
+}
+
+.ticketbooking {
+  margin: 5px 5px 15px;
+}
+
+.inner-dayTripItem {
+  text-align: center;
+  padding: 5px 18px 0;
+}
+.trip-information {
+  height: 220px;
+}
+
+.inner-dayTripItem span {
+  font-weight: bold;
+}
+.registration-link {
+  text-decoration: none;
+  color: #00008b;
+}
+
+.add-trip-form {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 100px;
+}
+
+.add-trip-form label {
+  margin: 5px;
+}
+
+.add-trip-form input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.add-trip-btn {
+  color: white;
+  background-color: #7d8e88;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 6px 18px;
+  border: black;
+}
+
+.tripInfo-for-coordinator {
+  height: 280px;
+}
+
+.block-add-trip-btn {
+  text-align: center;
+  margin: 10px 0 20px;
+}
+
+.ticket-block {
+  text-align: center;
+}
+
+.ticket {
+  padding: 15px;
+  border: 2px solid #003164;
+  width: 320px;
+  margin: auto;
+}
+
+.ticket p {
+  margin: 0;
+}
+
+.ticket span {
+  font-weight: bold;
+}
+
+.returnToEvents-block {
+  margin-top: 20px;
+}
+
+.returnToEvents-link {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
