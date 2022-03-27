@@ -10,7 +10,7 @@ div.hints {
 }
 
 div.hints div.hint:hover {
-    background-color : black;
+    background-color : #6c757d;
     color : white;
     cursor : pointer;
 }

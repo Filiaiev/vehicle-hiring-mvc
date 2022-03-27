@@ -4,19 +4,20 @@
         <title>Contact form</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link href="../client/style/inputForm.css" rel="stylesheet">
+        <link href="../client/style/general.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body>
         <div class="d-flex justify-content-center align-items-center">
-            <div class="border border-2 border-primary rounded-3 p-3 w-50">
+            <div class="border border-2 border-secondary rounded-3 p-3 w-50">
                 <div class="mb-3">
                     <h3 class="text-center">Fill in your details to complete booking</h3>
                 </div>
 
                 <?php if(!isset($_SESSION['user'])) : ?>
-                    <p class="text-center text-bold">Have an account? <a class="btn btn-primary" href="login_controller.php?location=<?=htmlspecialchars($_SERVER['REQUEST_URI'])?>">Log in</a></p>
+                    <p class="text-center text-bold">Have an account? <a class="btn btn-secondary" href="login_controller.php?location=<?=htmlspecialchars($_SERVER['REQUEST_URI'])?>">Log in</a></p>
                 <?php endif ?>
 
                 <form class="mx-auto" action="../controller/contactForm_controller.php" method="POST">
@@ -47,7 +48,7 @@
                                placeholder="Email" required/>
                     </div>
                     
-                    <hr class="bg-primary border-2 border-top border-primary">
+                    <hr class="bg-secondary border-2 border-top border-secondary">
                     
                     <div class="mb-3 form-group required">
                         <label class="form-label">Address Line 1</label>
@@ -85,7 +86,7 @@
                     </div>
         
                     <div class="mb-3">
-                        <input class="w-100 btn btn-primary" type="submit" value="Proceed to checkout"/>
+                        <input class="w-100 btn btn-secondary" type="submit" value="Proceed to checkout"/>
                     </div>
                 </form>
             </div>
