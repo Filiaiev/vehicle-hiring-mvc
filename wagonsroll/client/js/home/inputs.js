@@ -35,3 +35,11 @@ $(document).ready(function() {
         })
     });
 });
+
+$(document).ready(function() {
+    $('button#clear-filter-btn').click(function() {
+        $('form#filter input').each(function() {
+            localStorage.removeItem(this.id);
+        });
+    });
+});
