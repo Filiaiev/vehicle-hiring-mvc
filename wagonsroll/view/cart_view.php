@@ -14,10 +14,11 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="../client/style/general.css">
 	<link rel="stylesheet" href="../client/style/cart.css">
+	<link rel="stylesheet" href="../client/style/header.css"/>
 </head>
 <body>
 	<?php require_once "block/header.php" ?>
-	<ul class="nav nav-tabs nav-fill" style="margin-bottom:30px">
+	<ul class="nav nav-tabs nav-fill">
 		<li class="nav-item">
 			<a class="nav-link" href="home_controller.php">Homepage</a>
 		</li>
@@ -28,7 +29,7 @@
 			<a class="nav-link active" href="cart_controller.php">Basket</a>
 		</li>
 	</ul>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="col-lg-15 car-table-wrapper">
 			<table class="table table-bordered my-5 car-table">
 				<tr>

@@ -20,10 +20,11 @@
         <link rel="stylesheet" href="../client/style/general.css"/>
         <link rel="stylesheet" href="../client/style/search.css"/>
         <link rel="stylesheet" href="../client/style/filter.css"/>
+        <link rel="stylesheet" href="../client/style/header.css"/>
     </head>
     <body>
         <?php require_once "block/header.php" ?>
-        <ul class="nav nav-tabs nav-fill" style="margin-bottom:30px">
+        <ul class="nav nav-tabs nav-fill">
             <li class="nav-item">
                 <a class="nav-link active" href="home_controller.php">Homepage</a>
             </li>
@@ -49,7 +50,7 @@
             <h2 style="text-align:center">New vehicles:</h2>
             <div style="display:flex; justify-content:center; margin-bottom:10px">
                 <div style="position:relative" id="carouselExampleDark" class="carousel carousel-dark slide w-75" data-bs-ride="carousel" style="margin-bottom:30px">
-                    <div class="carousel-indicators" style="position:absolute; bottom:100px">
+                    <div class="carousel-indicators" style="position:absolute; bottom:85px">
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>

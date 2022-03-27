@@ -8,10 +8,11 @@
         <script type="text/javascript" src="../client/js/home/ticketBooking.js"></script>
         <script src="https://use.fontawesome.com/47474f8808.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../client/style/header.css"/>
     </head>
     <body>
         <?php require_once "block/header.php" ?>
-        <ul class="nav nav-tabs nav-fill" style="margin-bottom:30px">
+        <ul class="nav nav-tabs nav-fill">
             <li class="nav-item">
                 <a class="nav-link" href="home_controller.php">Homepage</a>
             </li>
