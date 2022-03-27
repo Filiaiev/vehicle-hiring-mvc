@@ -1,4 +1,4 @@
-
+<script type="text/javascript">
 	$(document).ready(function(){
 		$("button.remove").click(function(){
            var id = $(this).attr("id");
@@ -9,7 +9,7 @@
                url:"../controller/basketAction_controller.php",
                data:{action:action,id:id},
                success:function(data){
-                  alert("You have successfully removed vehicle "+id+" from your basket.");
+                  alert("you have removed vehicle "+id+"");
                }
             });
 		});
@@ -23,8 +23,9 @@
                url:"../controller/basketAction_controller.php",
                data:{action:action},
                success:function(data){
-                  alert("You have successfully emptied your basket.");
+                  alert("your cart list is empty");
                }
             });
         });
 	});
+</script>

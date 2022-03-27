@@ -1,21 +1,31 @@
 * {
-    background: #FFFEE4; 
-    font-family: Verdana, sans-serif;
-    color: 	#00008B;
+  background: #fffee4;
+  font-family: Verdana, sans-serif;
+  color: #00008b;
 }
 
 .instruction {
-    text-align: center;
-    padding-bottom: 30px;
+  text-align: center;
+  padding-bottom: 30px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    padding: 15px 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 15px 0;
 }
 
 input[type='text'] {
-    height: 40px;
-    padding: 10px 20px;
-    margin: 3px 0;
-    border-radius: 5px;
+  height: 40px;
+  padding: 10px 20px;
+  margin: 3px 0;
+  border-radius: 5px;
+}
+
+.red-text {
+  margin-top: 8px;
+  color: #ca1c1c;
 }
