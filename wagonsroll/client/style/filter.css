@@ -1,0 +1,46 @@
+#direct-search, .search-bttn {
+    display:block;
+    margin: 0 auto;
+}
+
+div.hints{
+    margin:0 auto;
+}
+
+.filter {
+    display: flex;
+    max-width: fit-content;
+    margin:0 auto;
+    border: 2px outset black;
+}
+
+#filter {
+    text-align: center;
+    padding: 15px;
+}
+
+#filterblocks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#filterblocks .filter-block {
+    padding-right: 20px;
+}
+
+#filterdiv {
+    width: fit-content;
+}
+
+#passengers-num-from, #passengers-num-to, #daily-rate-from, #daily-rate-to {
+    width: 70px;
+}
+
+
+input[type='checkbox'] {
+    width:20px;
+    height:20px;
+    border-radius:5px;
+    border:2px solid #555;
+}
