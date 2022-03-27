@@ -4,6 +4,11 @@
 
     session_start();
 
+    if(!isset($_SESSION["user"])) {
+        echo "Action is not allowed";
+        exit();
+    }
+
     $email = $_SESSION["user"]->email;
     $hasContactDetails = false;
     if ($_SESSION["contactDetails"]) {
