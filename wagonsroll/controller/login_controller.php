@@ -25,6 +25,9 @@
         // set loginStatus to 'false' and show the login page
         if($user == null || !password_verify($pass, $user->pass)) {
             $message = "Invalid credentials";
+            if(isset($_POST["location"])) {
+                $_GET["location"] = $_POST["location"];
+            }
             require_once "../view/login_view.php";
         }
         // If login was successful, set the new session variable and show the home page

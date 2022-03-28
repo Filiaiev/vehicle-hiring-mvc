@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light header">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="../controller/home_controller.php">
             <img 
                 src="https://www.kindpng.com/picc/m/140-1404603_sports-car-logo-car-logo-png-vector-transparent.png" 
                 alt="car logo"

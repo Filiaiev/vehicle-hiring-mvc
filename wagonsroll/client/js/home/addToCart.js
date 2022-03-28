@@ -1,5 +1,3 @@
-<script type="text/javascript">
-  
   $(document).ready(function(){
 
     $("input[name='add_to_cart']").on("click", function(){
@@ -12,6 +10,7 @@
         var typeName = $("#typeName"+regNum+"").val();
         var maxPassengerNumber = $("#maxPassengerNumber"+regNum+"").val();
         var imageUrl = $("#imageUrl"+regNum+"").val();
+        regNum = regNum.replace("_", " ");
 
         $.ajax({
             method:"POST",
@@ -25,4 +24,3 @@
          });
     });
   });
-</script>

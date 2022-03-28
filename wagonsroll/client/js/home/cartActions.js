@@ -1,4 +1,3 @@
-<script type="text/javascript">
 	$(document).ready(function(){
 		$("button.remove").click(function(){
            var id = $(this).attr("id");
@@ -28,4 +27,3 @@
             });
         });
 	});
-</script>

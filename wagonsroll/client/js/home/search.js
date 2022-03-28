@@ -3,7 +3,7 @@ $(document).ready(function() {
     directSearch.keyup(function() {
         var search = directSearch.val().trim();
         if(search != "") {
-            $.get("/k2177281/wagonsroll/service/vehicleService.php?namePattern=" + search, function(results) {
+            $.get("../service/vehicleService.php?namePattern=" + search, function(results) {
                 
                 divHints = $('form#fullname-search-form div.hints');
                 divHints.empty();

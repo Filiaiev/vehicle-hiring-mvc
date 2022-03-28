@@ -2,13 +2,13 @@
 $(document).ready(function() {
     var checkboxes = $('form input[type=checkbox]');
     checkboxes.each(function(){
-        this.checked = localStorage.getItem(this.id) === 'true' ? true : false;
+        this.checked = sessionStorage.getItem(this.id) === 'true' ? true : false;
     })
 
     // Load input values: numbers and dates
     var valueInputs = $('form input:not([type=checkbox], [type=submit])');
     valueInputs.each(function() {
-        this.value = localStorage.getItem(this.id);
+        this.value = sessionStorage.getItem(this.id);
     })
 });
 
@@ -25,13 +25,13 @@ $(document).ready(function() {
         // Save checkboxes state
         var checkboxes = $('form input[type=checkbox]');
         checkboxes.each(function(){
-            localStorage.setItem(this.id, this.checked);
+            sessionStorage.setItem(this.id, this.checked);
         })
 
         // Save inputs values, number and dates
         var valueInputs = $('form input:not([type=checkbox], [type=submit])');
         valueInputs.each(function() {
-            localStorage.setItem(this.id, this.value);
+            sessionStorage.setItem(this.id, this.value);
         })
     });
 });
@@ -39,7 +39,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('button#clear-filter-btn').click(function() {
         $('form#filter input').each(function() {
-            localStorage.removeItem(this.id);
+            sessionStorage.removeItem(this.id);
         });
     });
 });

@@ -1,5 +1,4 @@
 ALTER TABLE ContactDetails DROP FOREIGN KEY `ContactDetails_ibfk_1`;
-ALTER TABLE ContactDetails DROP FOREIGN KEY `ContactDetails_ibfk_2`;
 ALTER TABLE DayTrip DROP FOREIGN KEY `DayTrip_ibfk_1`;
 ALTER TABLE DayTripTicket DROP FOREIGN KEY `DayTripTicket_ibfk_1`;
 ALTER TABLE DayTripTicket DROP FOREIGN KEY `DayTripTicket_ibfk_2`;
