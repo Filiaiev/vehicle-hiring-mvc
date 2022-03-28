@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Add DayTrip Status</title>
+        <link rel="stylesheet" href="../client/style/general.css">
     </head>
     <body>
         <?php if($status){ ?>

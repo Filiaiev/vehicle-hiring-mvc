@@ -1,11 +1,14 @@
-.title-block {
+.title-block,
+.addTriptitle-block {
   display: flex;
   align-items: center;
   padding: 35px 300px 25px;
 }
 
 .title-block::before,
-.title-block::after {
+.title-block::after,
+.addTriptitle-block::before,
+.addTriptitle-block::after {
   content: '';
   flex: 1 1 auto;
   border-bottom: solid 1px #00008b;
@@ -20,13 +23,6 @@
   display: flex;
   align-items: center;
   padding: 5px 300px 25px;
-}
-
-.addTriptitle-block::before,
-.addTriptitle-block::after {
-  content: '';
-  flex: 1 1 auto;
-  border-bottom: solid 1px #00008b;
 }
 
 .trip-venue {
@@ -73,6 +69,7 @@
   display: flex;
   justify-content: space-around;
   margin: 10px 100px;
+  flex-wrap: wrap;
 }
 
 .add-trip-form label {
@@ -129,4 +126,32 @@
   text-decoration: none;
   font-size: 20px;
   font-weight: bold;
+}
+
+.red-text {
+  margin-top: 8px;
+  color: #ca1c1c;
+}
+
+.noTrip-text {
+  margin-top: 8px;
+  color: #ca1c1c;
+  text-align: center;
+}
+
+@media screen and (max-width: 910px) {
+  .event-title {
+    width: 100%;
+    text-align: center;
+  }
+  .addTriptitle-block::before,
+  .addTriptitle-block::after,
+  .title-block::before,
+  .title-block::after {
+    display: none;
+  }
+  .addTriptitle-block,
+  .title-block {
+    padding: 20px 20px 5px;
+  }
 }

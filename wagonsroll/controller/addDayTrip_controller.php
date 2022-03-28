@@ -42,7 +42,7 @@
         AddressDAO::getInstance()->addNewAddress($address);
     }
 
-    if($venue!="" && isset($venue) && $price!="" && isset($price) && $maxPassengersNum!="" && isset($maxPassengersNum) && $date!="" && isset($date)&& $pickupTime!="" && isset($pickupTime) && $returnTime!="" && isset($returnTime) && $date > date('Y-m-d'))
+    if($venue!="" && isset($venue) && $price!="" && isset($price) && $maxPassengersNum!="" && isset($maxPassengersNum) && $date!="" && isset($date)&& $pickupTime!="" && isset($pickupTime) && $returnTime!="" && isset($returnTime) && $date > date('Y-m-d') && $pickupTime < $returnTime)
     {
         $trip = new DayTrip();
         $trip->pickupAddress = AddressDAO::getInstance()->getIdByAddress($addressLine1, $addressLine2, $city, $county, $postcode)->addressId;

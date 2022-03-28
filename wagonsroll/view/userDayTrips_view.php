@@ -61,7 +61,7 @@
                     <?php endforeach ?>
                 </div>
             <?php } else {?>
-                <h3 class="red-text">There are no day-trips yet</h3>
+                <h3 class="noTrip-text">There are no day-trips yet</h3>
             <?php } ?>
         </div>
     </body>
