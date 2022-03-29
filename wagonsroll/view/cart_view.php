@@ -89,7 +89,7 @@
 						</tr>
 			</table>
 		</div>
-		<button onclick="window.location.href='../controller/contactForm_controller.php'" class="btn btn-secondary order-bttn">Make an order</button> <br><br><br>
+		<button onclick="window.location.href='../controller/contactForm_controller.php'" class="btn btn-secondary order-bttn" <?= empty($_SESSION["cart"]) ? "disabled" : "" ?> >Make an order</button> <br><br><br>
 	</div>
 
 
