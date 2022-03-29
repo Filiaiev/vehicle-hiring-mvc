@@ -37,10 +37,10 @@
             ];
             $contactDetailsObj = ContactDetailsDAO::getInstance()->save($contactDetails);
             
-            $_REQUEST["message"] = "User has been registered!";
+            $message = "User has been registered!";
             require_once "../view/login_view.php";
         }else {
-            $_REQUEST["message"] = "User $user->email is already exists";
+            $message = "User $user->email is already exists";
             require_once "../view/register_view.php";
         }
     }

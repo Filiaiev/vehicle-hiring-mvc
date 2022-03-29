@@ -1,12 +1,12 @@
 // Load inputs saved states
 $(document).ready(function() {
-    var checkboxes = $('form input[type=checkbox]');
+    var checkboxes = $('form#filter input[type=checkbox]');
     checkboxes.each(function(){
         this.checked = sessionStorage.getItem(this.id) === 'true' ? true : false;
     })
 
     // Load input values: numbers and dates
-    var valueInputs = $('form input:not([type=checkbox], [type=submit])');
+    var valueInputs = $('form#filter input:not([type=checkbox], [type=submit])');
     valueInputs.each(function() {
         this.value = sessionStorage.getItem(this.id);
     })
@@ -23,13 +23,13 @@ $(document).ready(function() {
             .prop('name', '');
 
         // Save checkboxes state
-        var checkboxes = $('form input[type=checkbox]');
+        var checkboxes = $('form#filter input[type=checkbox]');
         checkboxes.each(function(){
             sessionStorage.setItem(this.id, this.checked);
         })
 
         // Save inputs values, number and dates
-        var valueInputs = $('form input:not([type=checkbox], [type=submit])');
+        var valueInputs = $('form#filter input:not([type=checkbox], [type=submit])');
         valueInputs.each(function() {
             sessionStorage.setItem(this.id, this.value);
         })
